@@ -1,0 +1,344 @@
+[
+  {
+    "country": "🇰🇷 한국 (ASEAN 관련)",
+    "color": "#1d4ed8",
+    "items": [
+      {
+        "name": "한-아세안센터",
+        "sub": "ASEAN-Korea Centre",
+        "url": "https://www.aseankorea.org",
+        "note": "세종대로 124, 서울. 아세안 공식 협력기관"
+      },
+      {
+        "name": "국립아시아문화전당 (ACC)",
+        "sub": "Asia Culture Center, 광주",
+        "url": "https://www.acc.go.kr",
+        "note": "누산타라 컬렉션 7,744점 보유 (델프트 누산타라박물관 舊 소장품)"
+      },
+      {
+        "name": "부산 아세안문화원",
+        "sub": "ASEAN Culture House, 부산",
+        "url": "https://ach.or.kr",
+        "note": "2017년 개관. 한-아세안 대화관계 30주년"
+      },
+      {
+        "name": "국립세계문자박물관",
+        "sub": "National Museum of World Writing, 인천",
+        "url": "https://mow.or.kr",
+        "note": "2023년 개관. 2027 동남아 문자 특별전 예정"
+      },
+      {
+        "name": "국립어린이청소년도서관",
+        "sub": "NLCY",
+        "url": "https://www.nlcy.go.kr/NLCY/contents/C10503010000.do",
+        "note": "다국어 동화 영상 스트리밍 (아세안 언어 포함)"
+      },
+      {
+        "name": "올리볼리 세계 그림동화",
+        "sub": "Ollybolly",
+        "url": "https://ollybolly.org",
+        "note": "다문화 전래동화 영상 플랫폼"
+      },
+      {
+        "name": "ACC 아시아스토리 아카이브",
+        "sub": "아시아 이야기 200선",
+        "url": "http://archive.acc.go.kr",
+        "note": "2011~2012 동남아 이야기 200선 수록"
+      }
+    ]
+  },
+  {
+    "country": "🇻🇳 베트남",
+    "color": "#dc2626",
+    "items": [
+      {
+        "name": "베트남 국립역사박물관",
+        "sub": "Bảo tàng Lịch sử Quốc gia",
+        "url": "https://baotanglichsu.vn",
+        "note": "하노이. 청동기~현대 유물 소장"
+      },
+      {
+        "name": "베트남 국립미술관",
+        "sub": "Bảo tàng Mỹ thuật Việt Nam",
+        "url": "https://www.vnfam.vn",
+        "note": "하노이. 쯔놈 관련 회화·목판화"
+      },
+      {
+        "name": "Nhã Nam 출판사",
+        "sub": "Nhà Nam Publisher",
+        "url": "https://nhanam.vn",
+        "note": "2026년 Nguyễn Tư Nghiêm 삽화 김반끼에우 특별판 999부 출판"
+      },
+      {
+        "name": "Bảo tàng Nguyễn Tuân–Nguyễn Tư Nghiêm",
+        "sub": "90 B2 Trần Hưng Đạo, Hoàn Kiếm, Hà Nội",
+        "url": "",
+        "note": "작가 유족 관리. 조디악 회화 주요 소장처. 연락: nhanam@nhanam.vn"
+      },
+      {
+        "name": "베트남 국립도서관",
+        "sub": "Thư viện Quốc gia Việt Nam",
+        "url": "https://nlv.gov.vn",
+        "note": "하노이. 쯔놈·한문 고문헌 소장"
+      }
+    ]
+  },
+  {
+    "country": "🇰🇭 캄보디아",
+    "color": "#d85a30",
+    "items": [
+      {
+        "name": "캄보디아 국립박물관",
+        "sub": "National Museum of Cambodia",
+        "url": "https://www.cambodiamuseum.info",
+        "note": "프놈펜. 앙코르 시대 조각·비문"
+      },
+      {
+        "name": "앙코르 유적 관리청 (APSARA)",
+        "sub": "APSARA National Authority",
+        "url": "https://www.autoriteapsara.org",
+        "note": "앙코르와트 보존·연구"
+      },
+      {
+        "name": "캄보디아 왕립예술학교",
+        "sub": "Royal University of Fine Arts",
+        "url": "https://rufa.edu.kh",
+        "note": "크메르 전통예술·문자 교육"
+      }
+    ]
+  },
+  {
+    "country": "🇮🇩 인도네시아",
+    "color": "#dc2626",
+    "items": [
+      {
+        "name": "인도네시아 국립박물관",
+        "sub": "Museum Nasional Indonesia",
+        "url": "https://www.museumnasional.or.id",
+        "note": "자카르타. 우노보요 황금 유물 소장. 한국과 2005~2007 교류 전시"
+      },
+      {
+        "name": "보로부두르 문화재 관리청",
+        "sub": "Balai Konservasi Borobudur",
+        "url": "https://borobudurpark.com",
+        "note": "자와 중부. 1991년 유네스코 세계문화유산"
+      },
+      {
+        "name": "인도네시아 출판협회 (IKAPI)",
+        "sub": "Ikatan Penerbit Indonesia",
+        "url": "https://ikapi.id",
+        "note": "아동도서상 IKAPI Awards 운영"
+      },
+      {
+        "name": "ACC 누산타라 컬렉션",
+        "sub": "Nusantara Collection, Gwangju",
+        "url": "https://www.acc.go.kr",
+        "note": "페라나칸 문화·이슬람화·라마야나 그림자극·바틱·이캇 등 7,744점"
+      }
+    ]
+  },
+  {
+    "country": "🇲🇾 말레이시아 / 🇧🇳 브루나이",
+    "color": "#1d4ed8",
+    "items": [
+      {
+        "name": "말레이시아 국립박물관",
+        "sub": "Muzium Negara Malaysia",
+        "url": "https://www.muziumnegara.gov.my",
+        "note": "쿠알라룸푸르. 말라카 왕국·이슬람 문화"
+      },
+      {
+        "name": "말레이시아 국립도서관 (Arkib Negara)",
+        "sub": "Perpustakaan Negara Malaysia",
+        "url": "https://www.pnm.gov.my",
+        "note": "자위 문자 고문헌 소장"
+      },
+      {
+        "name": "싱가포르 국립도서관 (NLB)",
+        "sub": "National Library Board Singapore",
+        "url": "https://www.nlb.gov.sg",
+        "note": "히카얏 항 투아 (자위 필사본) 소장. 세자라 멜라유 1840년판 (Acc B31655050C) 소장"
+      },
+      {
+        "name": "NHB 싱가포르",
+        "sub": "National Heritage Board",
+        "url": "https://www.nhb.gov.sg",
+        "note": "싱가포르 국가 문화유산 관리"
+      }
+    ]
+  },
+  {
+    "country": "🇲🇲 미얀마",
+    "color": "#065f46",
+    "items": [
+      {
+        "name": "미얀마 국립박물관",
+        "sub": "National Museum of Myanmar",
+        "url": "",
+        "note": "양곤. 파간 왕조 비문·불교 유물"
+      },
+      {
+        "name": "바간 고고박물관",
+        "sub": "Bagan Archaeological Museum",
+        "url": "",
+        "note": "미야제디 비문(버마의 로제타 스톤) 관련 유물"
+      },
+      {
+        "name": "부산박물관 《미얀마의 불교미술》",
+        "sub": "2019년 교류 전시",
+        "url": "https://museum.busan.go.kr",
+        "note": "미얀마 4개 국립박물관 대여 유물 전시. 국내 전시 선례"
+      }
+    ]
+  },
+  {
+    "country": "🇵🇭 필리핀",
+    "color": "#1e40af",
+    "items": [
+      {
+        "name": "필리핀 국립박물관",
+        "sub": "National Museum of the Philippines",
+        "url": "https://www.nationalmuseum.gov.ph",
+        "note": "마닐라. 아바카다 문자·식민지 역사"
+      },
+      {
+        "name": "IBBY Philippines (PBBY)",
+        "sub": "Philippine Board on Books for Young People",
+        "url": "https://www.pbby.org.ph",
+        "note": "전국아동도서상(NCBA), Salanga Prize, Alcala Prize 운영"
+      },
+      {
+        "name": "Carlos Palanca Foundation",
+        "sub": "문학상 운영",
+        "url": "http://www.palancaawards.com.ph",
+        "note": "필리핀 최대 문학상. 아동 부문 포함"
+      },
+      {
+        "name": "Nautilus Comics Philippines",
+        "sub": "독립 만화 출판사",
+        "url": "https://nautiluscomics.net",
+        "note": "연락: orders@nautiluscomics.net. 아세안 신화 현대 그래픽노블"
+      }
+    ]
+  },
+  {
+    "country": "🇸🇬 싱가포르",
+    "color": "#b91c1c",
+    "items": [
+      {
+        "name": "싱가포르 국립도서위원회 (NLB)",
+        "sub": "National Library Board",
+        "url": "https://www.nlb.gov.sg",
+        "note": "히카얏 항 투아 자위 필사본 소장"
+      },
+      {
+        "name": "에스플라네이드 아카이브",
+        "sub": "Esplanade – Theatres on the Bay",
+        "url": "https://www.esplanade.com/offstage",
+        "note": "싱가포르 설화·예술 자료 아카이브"
+      },
+      {
+        "name": "Kontinentalist",
+        "sub": "비주얼 스토리텔링 미디어",
+        "url": "https://kontinentalist.com",
+        "note": "싱가포르 역사·설화 데이터 시각화"
+      },
+      {
+        "name": "아시안 어린이 콘텐츠 페스티벌 (AFCC)",
+        "sub": "Asian Festival of Children's Content",
+        "url": "https://afcc.com.sg",
+        "note": "싱가포르 도서협의회 운영. 아시아 아동도서·문학 (2011~)"
+      },
+      {
+        "name": "싱가포르 도서협의회 (SBC)",
+        "sub": "Singapore Book Council",
+        "url": "https://www.bookcouncil.sg",
+        "note": "HABA(헤드윅 아누아르 아동도서상) 운영"
+      }
+    ]
+  },
+  {
+    "country": "🇹🇭 태국",
+    "color": "#b45309",
+    "items": [
+      {
+        "name": "태국 국립박물관",
+        "sub": "National Museum Bangkok",
+        "url": "https://www.finearts.go.th/bangkoknationalmuseum",
+        "note": "방콕. 수코타이 람캄행 비문·타이 문자 원형"
+      },
+      {
+        "name": "태국 문화진흥부",
+        "sub": "กรมส่งเสริมวัฒนธรรม",
+        "url": "https://www.culture.go.th",
+        "note": "무형문화유산 관련 전래동화 목록 보유"
+      },
+      {
+        "name": "S.E.A. Write Award",
+        "sub": "동남아시아 작가상",
+        "url": "http://seawrite.com",
+        "note": "1979~. 태국 외교부 계열. ASEAN 종합문학상"
+      },
+      {
+        "name": "HimmapanVR Project",
+        "sub": "치앙마이대학",
+        "url": "",
+        "note": "히마판 신화세계 VR 콘텐츠. 연락: kitti.p@cmu.ac.th"
+      }
+    ]
+  },
+  {
+    "country": "🌐 국제 기관 & 아카이브",
+    "color": "#6b4fa8",
+    "items": [
+      {
+        "name": "DREAMSEA",
+        "sub": "동남아 원고 디지털화",
+        "url": "https://dreamsea.co",
+        "note": "동남아 고문헌 디지털 아카이브. 자바·발리·말레이 필사본"
+      },
+      {
+        "name": "영국도서관 (British Library)",
+        "sub": "Digitised Manuscripts",
+        "url": "https://www.bl.uk/manuscripts",
+        "note": "Add.12384 히카얏 항 투아 자위 (완전 디지털화)"
+      },
+      {
+        "name": "웰컴 컬렉션 (Wellcome Collection)",
+        "sub": "CC BY 4.0",
+        "url": "https://wellcomecollection.org",
+        "note": "동남아 의학·민속 관련 채색 필사본 다수"
+      },
+      {
+        "name": "미국 의회도서관 (LoC)",
+        "sub": "Southeast Asian Manuscripts",
+        "url": "https://www.loc.gov/collections/southeast-asian-manuscripts",
+        "note": "공공도메인 동남아 필사본 컬렉션"
+      },
+      {
+        "name": "영국박물관 이미지 (BM Images)",
+        "sub": "bmimages.com",
+        "url": "https://www.bmimages.com",
+        "note": "자타카 그림 on 면(BM 2003,1027,0.1) 등 라이선스 이미지"
+      },
+      {
+        "name": "브리지만 이미지",
+        "sub": "Bridgeman Images / GNC 포토뱅크",
+        "url": "https://www.bridgemanimages.com",
+        "note": "동남아 회화·판화 라이선스"
+      },
+      {
+        "name": "서울대 다양성+아시아 웹진",
+        "sub": "Diverse Asia, SNU",
+        "url": "https://diverseasia.snu.ac.kr",
+        "note": "동남아 생활문화·도시전설 연구"
+      },
+      {
+        "name": "건국대 이주민 구술설화 DB",
+        "sub": "한국학중앙연구원 지원",
+        "url": "http://waks.aks.ac.kr/rsh/dir/rview.aspx?rshID=AKS-2016-KFR-1230004",
+        "note": "캄보디아·미얀마·베트남 이주민 구술 설화"
+      }
+    ]
+  }
+]

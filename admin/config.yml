@@ -1,0 +1,113 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "tales"
+    label: "📖 아세안 동화"
+    files:
+      - label: "동화 목록"
+        name: "tales"
+        file: "data/tales.json"
+        fields:
+          - label: "동화 목록"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "제목", name: "title", widget: "string"}
+              - {label: "나라", name: "country", widget: "string"}
+              - label: "파도 (문화권)"
+                name: "wave"
+                widget: "select"
+                options:
+                  - {label: "🟠 인도 문화권", value: "india"}
+                  - {label: "🟢 이슬람", value: "islam"}
+                  - {label: "🔴 중국 영향권", value: "china"}
+                  - {label: "🔵 현대 도서", value: "modern"}
+              - label: "동물"
+                name: "animals"
+                widget: "list"
+                field: {label: "동물", name: "animal", widget: "string"}
+              - {label: "주제", name: "theme", widget: "string"}
+              - {label: "줄거리", name: "story", widget: "text"}
+              - label: "링크"
+                name: "links"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "링크 이름", name: "t", widget: "string"}
+                  - {label: "URL", name: "u", widget: "string"}
+
+  - name: "timeline"
+    label: "📅 역사 연표"
+    files:
+      - label: "연표 목록"
+        name: "timeline"
+        file: "data/tl.json"
+        fields:
+          - label: "연표 목록"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "연도", name: "year", widget: "string"}
+              - {label: "시대", name: "era", widget: "string"}
+              - {label: "제목", name: "title", widget: "string"}
+              - label: "태그 (문화권)"
+                name: "tag"
+                widget: "select"
+                options:
+                  - {label: "🟠 인도", value: "india"}
+                  - {label: "🔴 중국", value: "china"}
+                  - {label: "🟢 이슬람", value: "islam"}
+                  - {label: "🔵 유럽 식민", value: "europe"}
+                  - {label: "🟣 독립·근대", value: "modern"}
+                  - {label: "🩷 ASEAN", value: "asean"}
+              - label: "관련 나라"
+                name: "countries"
+                widget: "list"
+                field: {label: "나라", name: "country", widget: "string"}
+              - {label: "상세 설명", name: "detail", widget: "text"}
+
+  - name: "orgs"
+    label: "🏛 관련 기관"
+    files:
+      - label: "기관 목록"
+        name: "orgs"
+        file: "data/orgs.json"
+        fields:
+          - label: "기관 그룹"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "국가/그룹명", name: "country", widget: "string"}
+              - {label: "색상 (hex)", name: "color", widget: "string"}
+              - label: "기관 목록"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "기관명", name: "name", widget: "string"}
+                  - {label: "영문/부제", name: "sub", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string", required: false}
+                  - {label: "설명", name: "note", widget: "string", required: false}
+
+  - name: "quiz"
+    label: "✏️ 퀴즈"
+    files:
+      - label: "퀴즈 목록"
+        name: "quiz"
+        file: "data/quiz.json"
+        fields:
+          - label: "퀴즈 목록"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "문제", name: "q", widget: "string"}
+              - label: "선택지"
+                name: "opts"
+                widget: "list"
+                field: {label: "선택지", name: "opt", widget: "string"}
+              - {label: "정답 번호 (0부터 시작)", name: "ans", widget: "number"}
+              - {label: "해설", name: "fb", widget: "text"}

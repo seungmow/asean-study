@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>동남아시아 역사 교재</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#e94f8a;--pink-l:#fce8f3;
+  --purple:#6b4fa8;--purple-l:#ede8f8;
+  --teal:#0f6e56;--teal-l:#e1f5ee;
+  --amber:#ba7517;--amber-l:#faeeda;
+  --blue:#185fa5;--blue-l:#e6f1fb;
+  --coral:#d85a30;--coral-l:#faece7;
+  --green:#3b6d11;--green-l:#eaf3de;
+  --bg:#f7f5f0;--border:rgba(0,0,0,0.1);
+  --tx:#1a1a1a;--muted:#666;
+}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;font-size:15px}
+.hero{background:linear-gradient(135deg,#e94f8a,#6b4fa8);color:white;padding:2rem 2rem 1.6rem;text-align:center}
+.hero h1{font-size:1.8rem;font-weight:700;margin-bottom:.3rem}
+.hero p{font-size:.9rem;opacity:.85}
+.tab-nav{display:flex;background:white;border-bottom:2px solid var(--border);overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.tab-btn{flex:none;padding:.85rem 1.3rem;border:none;background:none;cursor:pointer;font-size:.88rem;font-weight:500;color:var(--muted);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab-btn.active{color:var(--pink);border-bottom-color:var(--pink)}
+.tab-btn:hover:not(.active){background:var(--bg)}
+.panel{display:none;padding:1.8rem;max-width:960px;margin:0 auto}
+.panel.active{display:block}
+.sec-title{font-size:1.2rem;font-weight:700;color:var(--purple);margin:1.8rem 0 .9rem;padding-bottom:.35rem;border-bottom:2px solid var(--purple-l)}
+.sec-title:first-child{margin-top:0}
+
+/* 연표 */
+.filter-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.1rem}
+.fbtn{padding:4px 13px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .15s}
+.fbtn.active,.fbtn:hover{border-color:var(--pink);color:var(--pink);background:var(--pink-l)}
+.cfbtn{padding:4px 11px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .15s}
+.cfbtn.active,.cfbtn:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-l)}
+.timeline{position:relative;padding-left:1.8rem}
+.timeline::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--pink),var(--purple))}
+.tl-item{position:relative;margin-bottom:1rem;background:white;border-radius:10px;padding:.85rem 1rem;border:1px solid var(--border);cursor:pointer;transition:box-shadow .2s}
+.tl-item:hover{box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.tl-item::before{content:'';position:absolute;left:-1.45rem;top:1rem;width:11px;height:11px;border-radius:50%;background:var(--pink);border:2px solid white;box-shadow:0 0 0 2px var(--pink)}
+.tl-era{font-size:.72rem;font-weight:700;color:var(--pink);letter-spacing:.05em;margin-bottom:1px}
+.tl-year{font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:2px}
+.tl-title{font-size:.92rem;font-weight:600;margin-bottom:3px}
+.tl-detail{font-size:.83rem;color:var(--muted);line-height:1.55;display:none;margin-top:.45rem;padding-top:.45rem;border-top:1px solid var(--border)}
+.tl-item.open .tl-detail{display:block}
+.tl-tag{display:inline-block;font-size:.7rem;padding:2px 7px;border-radius:20px;font-weight:600;margin-left:5px;vertical-align:middle}
+.tag-india{background:var(--amber-l);color:var(--amber)}
+.tag-china{background:var(--coral-l);color:var(--coral)}
+.tag-islam{background:var(--teal-l);color:var(--teal)}
+.tag-europe{background:var(--blue-l);color:var(--blue)}
+.tag-modern{background:var(--purple-l);color:var(--purple)}
+.tag-asean{background:var(--pink-l);color:var(--pink)}
+
+/* 국가 */
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.country-card{background:white;border-radius:13px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.country-card:hover{box-shadow:0 6px 22px rgba(0,0,0,.12);transform:translateY(-2px)}
+.card-header{padding:.9rem 1rem .55rem;display:flex;align-items:center;gap:.65rem}
+.card-flag{font-size:1.9rem}
+.card-name-ko{font-size:1.1rem;font-weight:700}
+.card-name-en{font-size:.72rem;color:var(--muted)}
+.card-slogan{font-size:.79rem;font-style:italic;color:var(--purple);padding:0 1rem .55rem}
+.card-body{padding:0 1rem .9rem}
+.info-row{display:flex;font-size:.8rem;margin-bottom:3px;gap:5px}
+.info-key{color:var(--muted);flex:0 0 62px}
+.info-val{font-weight:500}
+.card-tags{padding:.4rem 1rem .9rem;display:flex;flex-wrap:wrap;gap:5px}
+.ctag{font-size:.69rem;padding:2px 8px;border-radius:11px;font-weight:600}
+
+/* 모달 */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;overflow-y:auto;padding:2rem 1rem;align-items:flex-start;justify-content:center}
+.modal-bg.open{display:flex}
+.modal{background:white;border-radius:16px;width:100%;max-width:600px;overflow:hidden;margin:auto}
+.modal-top{padding:1.4rem;color:white;position:relative}
+.modal-close{position:absolute;top:.9rem;right:.9rem;background:rgba(255,255,255,.25);border:none;color:white;width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-flag{font-size:2.8rem;margin-bottom:.35rem}
+.modal-name{font-size:1.7rem;font-weight:700}
+.modal-name-en{font-size:.85rem;opacity:.8}
+.modal-body{padding:1.3rem 1.4rem}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:1.1rem}
+.modal-stat{background:var(--bg);border-radius:8px;padding:.65rem}
+.modal-stat .k{font-size:.72rem;color:var(--muted)}
+.modal-stat .v{font-size:.95rem;font-weight:700;margin-top:1px}
+.modal-desc{font-size:.87rem;line-height:1.7;color:#333;margin-bottom:.9rem}
+.modal-hist-title{font-size:.8rem;font-weight:700;color:var(--purple);margin-bottom:.45rem;text-transform:uppercase;letter-spacing:.04em}
+.modal-hist{font-size:.85rem;line-height:1.7;color:#444}
+.modal-kw{display:flex;flex-wrap:wrap;gap:5px;margin-top:.9rem}
+
+/* 문화권 */
+.wave-card{background:white;border-radius:11px;border-left:5px solid;padding:.95rem 1.1rem;margin-bottom:.9rem}
+.wave-card h3{font-size:.97rem;font-weight:700;margin-bottom:.35rem}
+.wave-card p{font-size:.84rem;color:#444;line-height:1.62}
+.wave-card ul{font-size:.84rem;color:#444;padding-left:1.1rem;line-height:1.72;margin-top:.4rem}
+
+/* 비교표 */
+.cmp-wrap{overflow-x:auto;margin-bottom:1.5rem}
+.cmp{width:100%;border-collapse:collapse;font-size:.82rem;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.cmp th{background:var(--purple);color:white;padding:.6rem .75rem;text-align:left;font-weight:600;white-space:nowrap}
+.cmp td{padding:.55rem .75rem;border-bottom:1px solid var(--border);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}
+.cmp tr:nth-child(even) td{background:var(--bg)}
+
+/* 퀴즈 */
+.quiz-card{background:white;border-radius:11px;border:1px solid var(--border);padding:1.1rem;margin-bottom:1.1rem}
+.quiz-q{font-size:.97rem;font-weight:600;margin-bottom:.75rem}
+.quiz-opts{display:flex;flex-direction:column;gap:6px}
+.quiz-opt{border:1.5px solid var(--border);border-radius:8px;padding:.5rem .85rem;cursor:pointer;font-size:.85rem;transition:all .15s;background:white;text-align:left}
+.quiz-opt:hover:not(:disabled){border-color:var(--purple);background:var(--purple-l)}
+.quiz-opt.correct{border-color:var(--teal);background:var(--teal-l);color:#064e3b;font-weight:600}
+.quiz-opt.wrong{border-color:#e24b4a;background:#fcebeb;color:#7f1d1d}
+.quiz-fb{font-size:.82rem;margin-top:.55rem;color:var(--muted);display:none;padding:.5rem .7rem;background:var(--bg);border-radius:7px}
+.quiz-fb.show{display:block}
+.reset-btn{margin-top:.8rem;padding:.6rem 1.3rem;background:var(--pink);color:white;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer}
+.tfbtn{padding:4px 12px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:.78rem;font-weight:600;transition:all .15s}
+.tfbtn.active,.tfbtn:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-l)}
+.afbtn{padding:4px 11px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:.78rem;font-weight:600;transition:all .15s}
+.afbtn.active,.afbtn:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-l)}
+.wfbtn{padding:4px 11px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:.78rem;font-weight:600;transition:all .15s}
+.wfbtn.active,.wfbtn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-l)}
+.tale-card{background:white;border-radius:12px;border:1px solid var(--border);padding:1rem;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.tale-card:hover{box-shadow:0 5px 18px rgba(0,0,0,.1);transform:translateY(-2px)}
+.tale-animal{font-size:.72rem;padding:2px 8px;border-radius:10px;background:var(--amber-l);color:var(--amber);font-weight:600;display:inline-block;margin-bottom:.45rem}
+.tale-title{font-size:.95rem;font-weight:700;margin-bottom:.3rem;line-height:1.4}
+.tale-country{font-size:.78rem;color:var(--muted);margin-bottom:.4rem}
+.tale-theme{font-size:.75rem;color:var(--purple);font-weight:600;margin-bottom:.5rem}
+.tale-body{font-size:.82rem;color:#444;line-height:1.62;display:none;margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border)}
+.tale-card.open .tale-body{display:block}
+.tale-link{
+  display:inline-block;font-size:.78rem;color:var(--blue);margin-top:.4rem;margin-right:.5rem;
+  padding:2px 8px;border:1px solid var(--blue);border-radius:6px;text-decoration:none;cursor:pointer;
+}
+.tale-link:hover{background:var(--blue-l)}
+.script-wave{background:white;border-radius:12px;border-left:5px solid;padding:1rem 1.1rem;margin-bottom:1rem}
+.script-wave h3{font-size:.97rem;font-weight:700;margin-bottom:.4rem}
+.script-wave p,.script-wave li{font-size:.84rem;color:#444;line-height:1.65}
+.script-wave ul{padding-left:1.2rem;margin-top:.4rem}
+.script-tree{background:var(--bg);border-radius:10px;padding:.9rem 1.1rem;font-family:monospace;font-size:.82rem;line-height:1.8;color:#333;overflow-x:auto;margin:.8rem 0}
+.org-card{background:white;border-radius:11px;border:1px solid var(--border);padding:.9rem 1rem}
+.org-name{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
+.org-sub{font-size:.78rem;color:var(--muted);margin-bottom:.5rem}
+.org-link{font-size:.78rem;color:var(--blue);display:block;margin-bottom:3px;word-break:break-all}
+
+@media(max-width:640px){
+  .panel{padding:1rem}
+  .country-grid{grid-template-columns:1fr}
+  .modal-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🌏 동남아시아 역사 교재</h1>
+  <p>연표 · 나라별 특징 · 문화권 · 비교표 · 퀴즈</p>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="timeline">📅 역사 연표</button>
+  <button class="tab-btn" data-tab="countries">🗺 나라별 특징</button>
+  <button class="tab-btn" data-tab="culture">🌊 문화권 흐름</button>
+  <button class="tab-btn" data-tab="compare">📊 비교표</button>
+  <button class="tab-btn" data-tab="quiz">✏️ 퀴즈</button>
+  <button class="tab-btn" data-tab="tales">📖 아세안 동화</button>
+  <button class="tab-btn" data-tab="scripts">✍️ 문자 이야기</button>
+  <button class="tab-btn" data-tab="orgs">🏛 관련 기관</button>
+</nav>
+
+<!-- 연표 -->
+<div id="panel-timeline" class="panel active">
+  <p style="font-size:.83rem;color:var(--muted);margin-bottom:.8rem">항목 클릭 → 상세 설명. 문화권 또는 나라별로 필터링 가능.</p>
+  <div style="font-size:.75rem;color:var(--muted);margin-bottom:.3rem;font-weight:700;letter-spacing:.04em">📌 문화권별</div>
+  <div class="filter-row" id="filter-row">
+    <button class="fbtn active" data-filter="all">전체</button>
+    <button class="fbtn" data-filter="india">🟠 인도</button>
+    <button class="fbtn" data-filter="china">🔴 중국</button>
+    <button class="fbtn" data-filter="islam">🟢 이슬람</button>
+    <button class="fbtn" data-filter="europe">🔵 유럽식민</button>
+    <button class="fbtn" data-filter="modern">🟣 독립·근대</button>
+    <button class="fbtn" data-filter="asean">🩷 ASEAN</button>
+  </div>
+  <div style="font-size:.75rem;color:var(--muted);margin-bottom:.3rem;font-weight:700;letter-spacing:.04em">🌏 나라별</div>
+  <div class="filter-row" id="country-filter-row">
+    <button class="cfbtn active" data-cf="all">전체</button>
+    <button class="cfbtn" data-cf="베트남">🇻🇳 베트남</button>
+    <button class="cfbtn" data-cf="캄보디아">🇰🇭 캄보디아</button>
+    <button class="cfbtn" data-cf="인도네시아">🇮🇩 인도네시아</button>
+    <button class="cfbtn" data-cf="라오스">🇱🇦 라오스</button>
+    <button class="cfbtn" data-cf="말레이시아">🇲🇾 말레이시아</button>
+    <button class="cfbtn" data-cf="미얀마">🇲🇲 미얀마</button>
+    <button class="cfbtn" data-cf="필리핀">🇵🇭 필리핀</button>
+    <button class="cfbtn" data-cf="싱가포르">🇸🇬 싱가포르</button>
+    <button class="cfbtn" data-cf="태국">🇹🇭 태국</button>
+    <button class="cfbtn" data-cf="동티모르">🇹🇱 동티모르</button>
+    <button class="cfbtn" data-cf="브루나이">🇧🇳 브루나이</button>
+  </div>
+  <div class="timeline" id="tl-list"></div>
+</div>
+
+<!-- 나라별 -->
+<div id="panel-countries" class="panel">
+  <div class="country-grid" id="country-grid"></div>
+</div>
+
+<!-- 모달 -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <div class="modal-top" id="modal-top">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-flag" id="m-flag"></div>
+      <div class="modal-name" id="m-name"></div>
+      <div class="modal-name-en" id="m-name-en"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid" id="m-grid"></div>
+      <div class="modal-desc" id="m-desc"></div>
+      <div class="modal-hist-title">역사 흐름</div>
+      <div class="modal-hist" id="m-hist"></div>
+      <div class="modal-kw" id="m-kw"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 문화권 -->
+<div id="panel-culture" class="panel">
+  <div class="sec-title">🌊 동남아시아를 형성한 3대 문화 파도</div>
+  <p style="font-size:.86rem;color:var(--muted);margin-bottom:1.3rem">
+    세 차례의 대규모 문화 유입은 서로를 대체하지 않고 <strong>겹쳐 쌓여</strong> 오늘날의 복합적 문화 모자이크를 만들었습니다.
+  </p>
+  <div class="wave-card" style="border-color:#ba7517">
+    <h3>🟠 제1파 — 인도 문화권 (기원전 1세기 ~ 14세기)</h3>
+    <p>힌두교·불교와 함께 산스크리트어 기반 문자, 왕권 신성론, 사원 건축이 해상 무역로를 통해 자연스럽게 흡수됨. 강제 정복 아님.</p>
+    <ul>
+      <li><b>앙코르 왕조(캄보디아)</b> — 힌두 사원 앙코르와트 → 후에 불교 사원 전환</li>
+      <li><b>파간 왕조(미얀마)</b> — 상좌부 불교 채택, 버마 문자 보급</li>
+      <li><b>수코타이 왕조(태국)</b> — 상좌부 불교, 1283년 타이 문자 창제</li>
+      <li><b>스리위자야(수마트라)</b> — 불교 해상제국, 말라카 해협 장악</li>
+      <li><b>샤일렌드라(자와)</b> — 보로부두르 대승불교 사원 건설</li>
+      <li><b>참파 왕국(베트남 중남부)</b> — 힌두교, 2~17세기 존속</li>
+    </ul>
+  </div>
+  <div class="wave-card" style="border-color:#d85a30">
+    <h3>🔴 중국 영향권 — 베트남 특수 (기원전 111년 ~ 근대)</h3>
+    <p>베트남 북부는 한나라부터 약 1000년간 직접 지배. 한자·유교·과거제가 뿌리내림. 나머지 동남아시아에는 화교 무역 네트워크로 간접 영향.</p>
+    <ul>
+      <li>기원전 111년 — 한나라 베트남 북부 정복</li>
+      <li>679년 — 당나라 안남 도호부 설치</li>
+      <li>972년 — 북송에게 독립 인정</li>
+      <li>1407~1427년 — 명나라 영락제 재점령 → 후레 왕조 축출</li>
+      <li>쩐 왕조 — 몽골 3차 침공 격퇴, 쯔놈 문자 제정</li>
+    </ul>
+  </div>
+  <div class="wave-card" style="border-color:#0f6e56">
+    <h3>🟢 제2파 — 이슬람 전파 (8세기 ~ 16세기)</h3>
+    <p>아랍·인도 이슬람 상인의 해상 무역을 통해 자연스럽게 전파. 말레이 반도·인도네시아·필리핀 남부 확산. 군주의 개종이 국가 차원 이슬람화를 이끔.</p>
+    <ul>
+      <li>8세기 — 이슬람 상인 동남아 해상로 진출</li>
+      <li>1414년 — 말라카 왕국, 동남아 최초 이슬람 국교 선포</li>
+      <li>마자파히트(인도네시아) → 이슬람 세력에 붕괴</li>
+      <li>현재: 말레이시아·인도네시아·브루나이 이슬람 다수</li>
+    </ul>
+  </div>
+  <div class="wave-card" style="border-color:#185fa5">
+    <h3>🔵 제3파 — 유럽 식민지배 (16세기 ~ 20세기)</h3>
+    <p>포르투갈의 말라카 점령(1511)을 시작으로 스페인·네덜란드·영국·프랑스가 경쟁 진출. 태국(시암)만 영-프 완충지대 전략으로 독립 유지. 라틴 문자·가톨릭·현대 행정 체계 이식.</p>
+    <ul>
+      <li>🇵🇹 포르투갈 — 말라카(1511), 향신료 무역 독점</li>
+      <li>🇪🇸 스페인 — 필리핀(16세기~1898), 가톨릭 전파</li>
+      <li>🇳🇱 네덜란드 — 인도네시아(17세기~1945), VOC 동인도회사</li>
+      <li>🇬🇧 영국 — 말레이시아·미얀마·싱가포르·브루나이</li>
+      <li>🇫🇷 프랑스 — 베트남·캄보디아·라오스(인도차이나)</li>
+      <li>동티모르 — 포르투갈 → 인도네시아 → 2002년 독립</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">🗺 지역별 문화권 분포 (개략)</div>
+  <svg width="100%" viewBox="0 0 680 400" style="border-radius:11px;border:1px solid var(--border);display:block">
+    <rect width="680" height="400" fill="#dbeafe" rx="11"/>
+    <text x="55" y="195" fill="#93c5fd" font-size="13" font-family="sans-serif" opacity=".8">인도양</text>
+    <text x="570" y="110" fill="#93c5fd" font-size="12" font-family="sans-serif" opacity=".8">태평양</text>
+    <text x="360" y="385" fill="#93c5fd" font-size="13" font-family="sans-serif" opacity=".8">자바해</text>
+    <!-- 미얀마 -->
+    <polygon points="195,55,228,50,243,85,238,138,218,158,198,148,183,118,188,76" fill="#f59e0b" opacity=".78" stroke="white" stroke-width="1.5"/>
+    <text x="212" y="108" text-anchor="middle" fill="white" font-size="11" font-weight="700" font-family="sans-serif">미얀마</text>
+    <!-- 태국 -->
+    <polygon points="228,108,263,93,278,118,273,183,248,208,233,198,223,163,233,138" fill="#f59e0b" opacity=".78" stroke="white" stroke-width="1.5"/>
+    <text x="250" y="152" text-anchor="middle" fill="white" font-size="11" font-weight="700" font-family="sans-serif">태국</text>
+    <!-- 라오스 -->
+    <polygon points="263,93,298,83,313,108,308,153,283,168,273,153,278,118" fill="#f59e0b" opacity=".78" stroke="white" stroke-width="1.5"/>
+    <text x="290" y="128" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="sans-serif">라오스</text>
+    <!-- 베트남 -->
+    <polygon points="298,83,328,78,348,98,353,168,338,208,318,218,303,198,308,153,313,108" fill="#ef4444" opacity=".72" stroke="white" stroke-width="1.5"/>
+    <text x="326" y="143" text-anchor="middle" fill="white" font-size="11" font-weight="700" font-family="sans-serif">베트남</text>
+    <!-- 캄보디아 -->
+    <polygon points="273,183,308,173,328,188,323,223,293,233,273,218,268,203" fill="#f59e0b" opacity=".78" stroke="white" stroke-width="1.5"/>
+    <text x="298" y="208" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="sans-serif">캄보디아</text>
+    <!-- 말레이 반도 -->
+    <polygon points="246,208,263,203,276,228,270,278,253,293,240,278,238,253" fill="#10b981" opacity=".75" stroke="white" stroke-width="1.5"/>
+    <text x="256" y="253" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="sans-serif">말레이시아</text>
+    <!-- 싱가포르 -->
+    <circle cx="268" cy="304" r="9" fill="#8b5cf6" opacity=".85" stroke="white" stroke-width="1.5"/>
+    <text x="283" y="307" fill="#4c1d95" font-size="9" font-weight="700" font-family="sans-serif">싱가포르</text>
+    <!-- 브루나이 -->
+    <circle cx="403" cy="213" r="11" fill="#10b981" opacity=".8" stroke="white" stroke-width="1.5"/>
+    <text x="418" y="216" fill="#064e3b" font-size="9" font-weight="700" font-family="sans-serif">브루나이</text>
+    <!-- 인도네시아 -->
+    <ellipse cx="428" cy="298" rx="108" ry="43" fill="#10b981" opacity=".65" stroke="white" stroke-width="1.5"/>
+    <text x="388" y="293" fill="white" font-size="11" font-weight="700" font-family="sans-serif">인도네시아</text>
+    <text x="410" y="308" fill="white" font-size="9" font-family="sans-serif">(수마트라·자와…)</text>
+    <!-- 필리핀 -->
+    <ellipse cx="528" cy="153" rx="48" ry="68" fill="#3b82f6" opacity=".65" stroke="white" stroke-width="1.5"/>
+    <text x="528" y="150" text-anchor="middle" fill="white" font-size="11" font-weight="700" font-family="sans-serif">필리핀</text>
+    <text x="528" y="164" text-anchor="middle" fill="white" font-size="9" font-family="sans-serif">(가톨릭)</text>
+    <!-- 동티모르 -->
+    <ellipse cx="518" cy="308" rx="21" ry="12" fill="#3b82f6" opacity=".7" stroke="white" stroke-width="1.5"/>
+    <text x="518" y="312" text-anchor="middle" fill="white" font-size="8" font-weight="700" font-family="sans-serif">동티모르</text>
+    <!-- 범례 -->
+    <rect x="10" y="315" width="185" height="78" rx="8" fill="rgba(255,255,255,.92)" stroke="rgba(0,0,0,.08)" stroke-width=".5"/>
+    <text x="20" y="332" font-size="11" font-weight="700" fill="#333" font-family="sans-serif">문화권 범례</text>
+    <rect x="20" y="340" width="10" height="10" rx="2" fill="#f59e0b"/><text x="34" y="350" font-size="9" fill="#555" font-family="sans-serif">인도권 (불교·힌두)</text>
+    <rect x="20" y="356" width="10" height="10" rx="2" fill="#ef4444"/><text x="34" y="366" font-size="9" fill="#555" font-family="sans-serif">중국 영향권 (유교·한자)</text>
+    <rect x="105" y="340" width="10" height="10" rx="2" fill="#10b981"/><text x="119" y="350" font-size="9" fill="#555" font-family="sans-serif">이슬람권</text>
+    <rect x="105" y="356" width="10" height="10" rx="2" fill="#3b82f6"/><text x="119" y="366" font-size="9" fill="#555" font-family="sans-serif">가톨릭·서구권</text>
+    <rect x="105" y="372" width="10" height="10" rx="2" fill="#8b5cf6"/><text x="119" y="382" font-size="9" fill="#555" font-family="sans-serif">복합 문화권</text>
+    <text x="12" y="388" font-size="8" fill="#aaa" font-family="sans-serif">※ 개략적 표현</text>
+  </svg>
+</div>
+
+<!-- 비교표 -->
+<div id="panel-compare" class="panel">
+  <div class="sec-title">📊 ASEAN 11개국 주요 지표</div>
+  <p style="font-size:.82rem;color:var(--muted);margin-bottom:.9rem">출처: 2024~2025년 기준 / 한-아세안센터 워크북</p>
+  <div class="cmp-wrap">
+  <table class="cmp">
+    <tr><th>국가</th><th>수도</th><th>인구</th><th>주요 종교</th><th>공용어</th><th>1인당 GDP</th><th>독립</th></tr>
+    <tr><td>🇧🇳 브루나이</td><td>반다르스리브가완</td><td>46만</td><td>이슬람(국교)</td><td>말레이어·영어</td><td>$34,044</td><td>1984</td></tr>
+    <tr><td>🇰🇭 캄보디아</td><td>프놈펜</td><td>1,764만</td><td>불교 97.1%</td><td>크메르어</td><td>$2,755</td><td>1953</td></tr>
+    <tr><td>🇮🇩 인도네시아</td><td>자카르타</td><td>2억 8,349만</td><td>이슬람 87.4%</td><td>인도네시아어</td><td>$4,958</td><td>1945</td></tr>
+    <tr><td>🇱🇦 라오스</td><td>비엔티안</td><td>777만</td><td>불교 64.7%</td><td>라오어</td><td>$2,066</td><td>1953</td></tr>
+    <tr><td>🇲🇾 말레이시아</td><td>쿠알라룸푸르</td><td>3,300만</td><td>이슬람 61.3%</td><td>말레이어·영어</td><td>$12,800</td><td>1957</td></tr>
+    <tr><td>🇲🇲 미얀마</td><td>네피도</td><td>5,450만</td><td>불교 87.9%</td><td>미얀마어</td><td>$1,114</td><td>1948</td></tr>
+    <tr><td>🇵🇭 필리핀</td><td>마닐라</td><td>1억 1,584만</td><td>천주교 78.8%</td><td>영어·필리핀어</td><td>$4,079</td><td>1946</td></tr>
+    <tr><td>🇸🇬 싱가포르</td><td>싱가포르</td><td>604만</td><td>불교 31.1%</td><td>영어·중국어·말레이어·타밀어</td><td>$90,674</td><td>1965</td></tr>
+    <tr><td>🇹🇭 태국</td><td>방콕</td><td>7,167만</td><td>불교 92.5%</td><td>태국어</td><td>$7,492</td><td>식민지화 없음</td></tr>
+    <tr><td>🇹🇱 동티모르</td><td>딜리</td><td>140만</td><td>천주교 97.6%</td><td>테툼어·포르투갈어</td><td>$1,438</td><td>2002</td></tr>
+    <tr><td>🇻🇳 베트남</td><td>하노이</td><td>1억 99만</td><td>무교 86.3%</td><td>베트남어</td><td>$4,536</td><td>1945</td></tr>
+  </table>
+  </div>
+
+  <div class="sec-title">🏛 주요 왕조 비교</div>
+  <div class="cmp-wrap">
+  <table class="cmp">
+    <tr><th>왕조명</th><th>현재 국가</th><th>시기</th><th>문화권</th><th>주요 특징</th></tr>
+    <tr><td>앙코르 왕조</td><td>캄보디아</td><td>9~15세기</td><td>인도(힌두→불교)</td><td>앙코르와트·앙코르톰 건설</td></tr>
+    <tr><td>파간 왕조</td><td>미얀마</td><td>1044~1287</td><td>인도(상좌부불교)</td><td>버마 최초 통일, 버마 문자 보급</td></tr>
+    <tr><td>수코타이 왕조</td><td>태국</td><td>1238~1438</td><td>인도(상좌부불교)</td><td>타이 문자(1283) 창제</td></tr>
+    <tr><td>아유타야 왕조</td><td>태국</td><td>1351~1767</td><td>인도(불교)+서구</td><td>포르투갈 무역 허용, 1767년 미얀마에 멸망</td></tr>
+    <tr><td>스리위자야</td><td>인도네시아</td><td>7~13세기</td><td>인도(불교)</td><td>말라카 해협 장악, 불교 해상제국</td></tr>
+    <tr><td>마자파히트</td><td>인도네시아</td><td>1293~1527</td><td>인도→이슬람</td><td>동남아 최대 제국, 이슬람에 붕괴</td></tr>
+    <tr><td>말라카 왕조</td><td>말레이시아</td><td>1400~1511</td><td>이슬람</td><td>동남아 최초 이슬람 국가, 포르투갈에 멸망</td></tr>
+    <tr><td>리(Lý) 왕조</td><td>베트남</td><td>1009~1225</td><td>중국(유교·불교)</td><td>과거제 도입, 문묘 설립, 대월 국호</td></tr>
+    <tr><td>쩐(Trần) 왕조</td><td>베트남</td><td>1225~1400</td><td>중국 영향</td><td>몽골 3차 침공 격퇴, 쯔놈 문자 제정</td></tr>
+    <tr><td>응우옌 왕조</td><td>베트남</td><td>1802~1945</td><td>중국+프랑스</td><td>베트남 최후 왕조, 프랑스 식민지배</td></tr>
+    <tr><td>짜크리 왕조</td><td>태국</td><td>1782~현재</td><td>불교 입헌군주</td><td>동남아 유일 비식민, 현재까지 왕실 유지</td></tr>
+    <tr><td>란쌍 왕국</td><td>라오스</td><td>1353~1707</td><td>인도(불교)</td><td>라오족, 메콩강 유역 불교 왕국</td></tr>
+  </table>
+  </div>
+
+  <div class="sec-title">📅 독립 시기</div>
+  <div class="cmp-wrap">
+  <table class="cmp">
+    <tr><th>연도</th><th>국가</th><th>구 지배국</th><th>비고</th></tr>
+    <tr><td>1945.8.17</td><td>🇮🇩 인도네시아</td><td>네덜란드</td><td>주권 공식 회복 1949</td></tr>
+    <tr><td>1945.9.2</td><td>🇻🇳 베트남</td><td>프랑스</td><td>베트남 민주공화국 선포</td></tr>
+    <tr><td>1946.7.4</td><td>🇵🇭 필리핀</td><td>미국(구 스페인)</td><td></td></tr>
+    <tr><td>1948.1.4</td><td>🇲🇲 미얀마</td><td>영국</td><td></td></tr>
+    <tr><td>1953</td><td>🇰🇭 캄보디아 / 🇱🇦 라오스</td><td>프랑스</td><td></td></tr>
+    <tr><td>1957.8.31</td><td>🇲🇾 말레이시아</td><td>영국</td><td></td></tr>
+    <tr><td>1965.8.9</td><td>🇸🇬 싱가포르</td><td>말레이시아 연방</td><td>분리 독립</td></tr>
+    <tr><td>1984.1.1</td><td>🇧🇳 브루나이</td><td>영국</td><td>술탄제 왕국</td></tr>
+    <tr><td>2002.5.20</td><td>🇹🇱 동티모르</td><td>인도네시아(구 포르투갈)</td><td>ASEAN 가입 2025</td></tr>
+    <tr><td>식민지화 없음</td><td>🇹🇭 태국(시암)</td><td>—</td><td>영·프 완충지대 전략</td></tr>
+  </table>
+  </div>
+</div>
+
+<!-- 아세안 동화 -->
+<div id="panel-tales" class="panel">
+  <div class="sec-title">📖 아세안의 동화 — 이야기 목록</div>
+  <p style="font-size:.83rem;color:var(--muted);margin-bottom:1rem">2027 특별전 〈아세안의 동화〉 후보 이야기 목록. 카드 클릭 시 줄거리 펼침.</p>
+  <div style="font-size:.75rem;color:var(--muted);margin-bottom:.3rem;font-weight:700">🌏 나라별 필터</div>
+  <div class="filter-row" id="tales-filter">
+    <button class="tfbtn active" data-tf="all">전체</button>
+    <button class="tfbtn" data-tf="베트남">🇻🇳 베트남</button>
+    <button class="tfbtn" data-tf="태국">🇹🇭 태국</button>
+    <button class="tfbtn" data-tf="라오스">🇱🇦 라오스</button>
+    <button class="tfbtn" data-tf="캄보디아">🇰🇭 캄보디아</button>
+    <button class="tfbtn" data-tf="미얀마">🇲🇲 미얀마</button>
+    <button class="tfbtn" data-tf="인도네시아">🇮🇩 인도네시아</button>
+    <button class="tfbtn" data-tf="필리핀">🇵🇭 필리핀</button>
+    <button class="tfbtn" data-tf="싱가포르">🇸🇬 싱가포르</button>
+    <button class="tfbtn" data-tf="말레이시아">🇲🇾 말레이시아</button>
+    <button class="tfbtn" data-tf="동티모르">🇹🇱 동티모르</button>
+  </div>
+  <div style="font-size:.75rem;color:var(--muted);margin-bottom:.3rem;font-weight:700;margin-top:.6rem">🌊 파도별 (문화권)</div>
+  <div class="filter-row" id="wave-filter">
+    <button class="wfbtn active" data-wf="all">전체</button>
+    <button class="wfbtn" data-wf="india">🟠 인도 문화권</button>
+    <button class="wfbtn" data-wf="islam">🟢 이슬람</button>
+    <button class="wfbtn" data-wf="china">🔴 중국 영향권</button>
+    <button class="wfbtn" data-wf="modern">🔵 현대 도서·창작</button>
+  </div>
+  <div style="font-size:.75rem;color:var(--muted);margin-bottom:.3rem;font-weight:700;margin-top:.6rem">🐾 동물별 필터</div>
+  <div class="filter-row" id="animal-filter">
+    <button class="afbtn active" data-af="all">전체</button>
+    <button class="afbtn" data-af="나가">🐍 나가(뱀)</button>
+    <button class="afbtn" data-af="가루다">🦅 가루다(새)</button>
+    <button class="afbtn" data-af="악어">🐊 악어</button>
+    <button class="afbtn" data-af="코끼리">🐘 코끼리</button>
+    <button class="afbtn" data-af="호랑이">🐯 호랑이</button>
+    <button class="afbtn" data-af="용">🐉 용</button>
+    <button class="afbtn" data-af="거북">🐢 거북</button>
+    <button class="afbtn" data-af="두꺼비">🐸 두꺼비</button>
+    <button class="afbtn" data-af="쥐사슴">🦌 쥐사슴</button>
+    <button class="afbtn" data-af="물소">🐃 물소</button>
+  </div>
+  <div id="tales-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:1rem"></div>
+</div>
+
+<!-- 문자 이야기 -->
+<div id="panel-scripts" class="panel">
+  <div class="sec-title">✍️ 동남아시아 문자 이야기</div>
+  <p style="font-size:.86rem;color:var(--muted);margin-bottom:1.3rem">
+    동남아시아의 문자들은 인도 브라흐미 계통, 아라비아 문자, 한자, 로마자라는 네 가지 큰 흐름에서 형성되었습니다.
+    전시 〈아세안을 물들인 문자들〉의 4개 파도 구조와 대응합니다.
+  </p>
+
+  <div class="sec-title" style="font-size:1rem">🟠 제1파: 인도 브라흐미 계통</div>
+  <div class="script-wave" style="border-color:#ba7517">
+    <h3>브라흐미 → 팔라바 → 동남아 전파</h3>
+    <p>인도의 브라흐미 문자에서 파생된 <b>팔라바 문자</b>가 6~8세기 해상 교역과 불교·힌두교 확산을 통해 동남아시아로 전파됩니다.
+    태국·라오스·캄보디아·미얀마 문자가 모두 이 공통 계통을 공유합니다.</p>
+    <ul>
+      <li><b>팔라바 단계</b> — 종교 언어(팔리어·산스크리트어) 기록 중심. 드바라바티 문화권 법륜 비문에서 확인</li>
+      <li><b>후팔라바 단계</b> (13~14세기) — 획 단순화, 지역별 변형 발생</li>
+      <li><b>카위 계통</b> — 스리비자야 왕국·말레이 반도·자와·수마트라 → 자바 문자의 기원</li>
+      <li><b>고대 몬 계통</b> — 드바라바티·하리푼차이 → 란나 문자·미얀마 문자에 영향</li>
+      <li><b>크메르 계통</b> — 앙코르 왕국 → 수코타이 → 아유타야 → <b>현대 태국 문자</b></li>
+    </ul>
+  </div>
+
+  <div class="script-tree">팔라바 (남인도)<br>  ↓ 동남아 전파 (무역·종교)<br>후팔라바<br>  ↓<br>  ├─ 카위 계통 → 자바 문자 / 수마트라 문자<br>  ├─ 몬 계통 → 란나 문자 → 미얀마 문자<br>  └─ 크메르 계통 → 크메르 문자<br>              ↓<br>          수코타이 (1283년 람캄행 문자 개혁)<br>              ↓<br>          아유타야 → 라타나코신 → 현대 태국 문자<br>              ↓<br>      라오스 문자 / 란쌍 왕국 탐 문자</div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">국가별 문자 상세</div>
+  <div style="overflow-x:auto">
+  <table class="cmp">
+    <tr><th>국가</th><th>주요 문자</th><th>계통</th><th>특징</th><th>현황</th></tr>
+    <tr><td>🇹🇭 태국</td><td>타이 문자</td><td>브라흐미→팔라바→크메르→수코타이</td><td>자음 42자, 모음 28, 성조부호 4. 주어+동사+목적어 어순</td><td>1283년 람캄행 개혁, 19세기 인쇄술 도입으로 형태 고정</td></tr>
+    <tr><td>🇱🇦 라오스</td><td>라오 문자</td><td>브라흐미→팔라바→수코타이→란쌍</td><td>자음 27자, 모음부호 33, 성조기호 4. 좌→우, 띄어쓰기 없음</td><td>탐(Tham) 문자는 불경 표기용으로 별도 존재. 프랑스 식민기에 라오어 사용 기회 감소</td></tr>
+    <tr><td>🇰🇭 캄보디아</td><td>크메르 문자</td><td>브라흐미→팔라바→크메르</td><td>기본 자음 33자. 7세기부터 기록 존재. 띄어쓰기 없음</td><td>오랜 변화로 현대어 음과 문자 간 복잡한 대응 관계 발생</td></tr>
+    <tr><td>🇲🇲 미얀마</td><td>버마 문자</td><td>브라흐미→팔라바→몬 계통</td><td>구형(원형) 기본. 패엽 필사 과정에서 각진 획→둥근 획으로 변화</td><td>12세기 미야제디 비문 = "버마의 로제타 스톤" (버마어·팔리어·몬어·퓨어)</td></tr>
+    <tr><td>🇮🇩 인도네시아</td><td>자바 문자 / 로마자</td><td>브라흐미→팔라바→카위→자바</td><td>9세기 카위 문자 기원. 곡선적·장식성 강한 형태. 하나차라카 배열</td><td>현재 공식 언어는 인도네시아어(로마자). 자바 문자는 지방과목 정도 수준으로 잔존</td></tr>
+    <tr><td>🇻🇳 베트남</td><td>쯔놈 → 꾸옥응으(로마자)</td><td>한자→쯔놈 / 선교사 로마자 표기→꾸옥응으</td><td>14세기 쯔놈 고안. 1651년 선교사 드 로드 사전. 1972년 현재 정서법 확립</td><td>현재 꾸옥응으(로마자 베트남어) 공식 사용. 쯔놈은 고문서 연구에서만</td></tr>
+    <tr><td>🇵🇭 필리핀</td><td>아바카다 / 로마자</td><td>말레이폴리네시아 계통 고유 문자 → 스페인·미국 식민으로 로마자 대체</td><td>110여 개 언어. 타갈로그어 기반 필리피노어가 1987년 헌법으로 공인</td><td>16세기~스페인, 20세기 미국 식민. 영어 공용어로 잔존</td></tr>
+    <tr><td>🇲🇾 말레이시아 / 🇧🇳 브루나이</td><td>자위 문자(아라비아계) + 로마자</td><td>아라비아 문자 → 이슬람 전파와 함께 말레이어 표기에 적용</td><td>13세기 이슬람 전파로 아라비아 문자 확산. 영국 식민기 로마자 도입</td><td>현재 로마자(말레이어) 공식. 자위 문자는 종교·전통 맥락에서 병용</td></tr>
+    <tr><td>🇸🇬 싱가포르</td><td>영어·중국어·말레이어·타밀어 (4개 공용어)</td><td>복합</td><td>다민족 도시국가로 4개 언어 체계 공존</td><td>영어가 사실상 행정·교육 언어</td></tr>
+    <tr><td>🇹🇱 동티모르</td><td>테툼어·포르투갈어 (로마자)</td><td>포르투갈 식민 → 로마자</td><td>포르투갈어와 현지 테툼어 공용. 인도네시아어는 헌법상 실무 언어로 규정</td><td>2002년 독립 후 국가 정체성과 언어 재정립 중</td></tr>
+  </table>
+  </div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">🟢 제2파: 아라비아 문자 (이슬람 전파)</div>
+  <div class="script-wave" style="border-color:#0f6e56">
+    <h3>아라비아 문자 → 자위 문자 → 말레이·인도네시아권</h3>
+    <p>13세기 이슬람 상인의 동남아 진출과 함께 아라비아 문자가 말레이 반도와 인도네시아로 확산됩니다.
+    코란은 신의 언어이므로 아라비아 문자로만 읽어야 한다는 원칙이 문자 보급을 강화했습니다.</p>
+    <ul>
+      <li><b>자위(Jawi) 문자</b> — 아라비아 문자를 말레이어 표기에 맞게 변형. 브루나이·말레이시아에서 현재도 병용</li>
+      <li>영국령 말레이 vs 네덜란드령 인도네시아 → 분리 식민지배로 자위 문자 명칭·음가 차이 발생</li>
+      <li>말라카 왕조 1414년 이슬람 국교 선포 → 동남아 최초 이슬람 국가, 문자 보급의 거점</li>
+    </ul>
+  </div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">🔴 제3파: 한자 문화권 (베트남)</div>
+  <div class="script-wave" style="border-color:#d85a30">
+    <h3>한자 → 쯔놈 → 꾸옥응으(베트남 로마자)</h3>
+    <p>기원전 111년부터 약 1000년간 중국 지배를 받은 베트남은 한자를 공식 문자로 사용했습니다.
+    쯔놈(字喃)은 14세기에 한자를 변형·조합해 베트남 고유어를 표기하기 위해 고안된 문자입니다.
+    쩐 왕조 시기(13~14세기) 제정되어 문학 발달에 기여했으나, 19세기 프랑스 식민기에 로마자 기반 꾸옥응으로 대체되었습니다.</p>
+    <ul>
+      <li>1651년 예수회 선교사 알렉산드르 드 로드 「베트남어-포르투갈어-라틴어 사전」 출판</li>
+      <li>19세기 후반 프랑스 식민지배 → 꾸옥응으 본격 보급</li>
+      <li>20세기 민족주의·공산주의 운동과 함께 꾸옥응으가 민중 문자로 자리매김</li>
+    </ul>
+  </div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">🔵 제4파: 로마자 (유럽 식민)</div>
+  <div class="script-wave" style="border-color:#185fa5">
+    <h3>스페인·포르투갈·네덜란드·프랑스·영국 → 로마자 이식</h3>
+    <p>16~20세기 유럽 식민지배는 각 지역에 로마자를 이식했습니다.
+    현재 동남아시아 대부분 국가의 공식 표기가 로마자인 이유입니다.</p>
+    <ul>
+      <li>🇵🇭 필리핀 — 스페인(16c~)→미국(20c) → 영어·로마자 공용</li>
+      <li>🇮🇩 인도네시아 — 네덜란드 1901년 공식 철자 도입 → 1972년 현재 정서법 확립</li>
+      <li>🇻🇳 베트남 — 프랑스 식민기 꾸옥응으 통일 정서법 성립</li>
+      <li>🇲🇾 말레이시아 — 영국 식민기 로마자 도입, 자위 문자와 병용</li>
+      <li>🇹🇱 동티모르 — 포르투갈 식민 → 포르투갈어·테툼어 로마자 공용</li>
+    </ul>
+  </div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">🗺 문자 계통 전체 요약도</div>
+  <div class="script-tree">브라흐미 (인도)<br>  ↓<br>팔라바 → 동남아 전파<br>  ↓<br>후팔라바 → 지역 분화<br>  ├─ 크메르 문자 🇰🇭<br>  │      ↓<br>  │   수코타이 → 태국 문자 🇹🇭<br>  │      ↓<br>  │   라오스 문자 🇱🇦<br>  ├─ 몬 계통 → 란나 → 미얀마 문자 🇲🇲<br>  └─ 카위 → 자바 문자 🇮🇩<br><br>아라비아 문자<br>  ↓ 이슬람 전파 (13세기~)<br>자위 문자 🇲🇾🇧🇳 → 로마자 병용<br><br>한자 (중국)<br>  ↓ 베트남 1000년 지배<br>쯔놈 (14세기) → 꾸옥응으 (19세기) 🇻🇳<br><br>로마자 (유럽 식민)<br>  ↓<br>인도네시아어 🇮🇩 / 필리핀어 🇵🇭 / 말레이어 🇲🇾 / 테툼어 🇹🇱</div>
+</div>
+
+<!-- 관련 기관 -->
+<div id="panel-orgs" class="panel">
+  <div class="sec-title">🏛 아세안 관련 기관 & 웹사이트</div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">📚 국가별 문화기관</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:1.5rem" id="org-grid"></div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">🏆 아세안 문학상 & 아동도서상</div>
+  <div style="overflow-x:auto">
+  <table class="cmp">
+    <tr><th>상 이름</th><th>운영</th><th>범위</th><th>링크</th></tr>
+    <tr><td>동남아시아 작가상 (S.E.A. Write Award)</td><td>태국 외교부 계열</td><td>ASEAN 종합문학 (1979~)</td><td><a href="http://seawrite.com/" target="_blank" rel="noopener">seawrite.com</a></td></tr>
+    <tr><td>IBBY 싱가포르 올해의 두리안 2026</td><td>IBBY Singapore</td><td>싱가포르 우수 아동 그림책</td><td><a href="https://afcc.com.sg/2026" target="_blank" rel="noopener">afcc.com.sg</a></td></tr>
+    <tr><td>헤드윅 아누아르 아동도서상 (HABA)</td><td>싱가포르 도서협의회 (SBC)</td><td>싱가포르 아동서 (격년)</td><td><a href="https://www.bookcouncil.sg/awards/other-children-s-book-awards/hedwig-anuar-children-s-book-award-haba" target="_blank" rel="noopener">bookcouncil.sg</a></td></tr>
+    <tr><td>삼성 키즈타임 작가상 (SKTAA)</td><td>싱가포르 국립도서개발위원회</td><td>ASEAN 아동 그림책 (2015~2016 종료)</td><td><a href="https://archives.bookcouncil.sg/awards/samsung-kidstime-authors-award" target="_blank" rel="noopener">archives.bookcouncil.sg</a></td></tr>
+    <tr><td>아시안 어린이 콘텐츠 페스티벌 (AFCC)</td><td>싱가포르 도서협의회 (SBC)</td><td>아시아 아동도서·문학 (2011~)</td><td><a href="https://afcc.com.sg" target="_blank" rel="noopener">afcc.com.sg</a></td></tr>
+    <tr><td>필리핀 전국아동도서상 (NCBA)</td><td>IBBY Philippines (PBBY)</td><td>필리핀 아동도서</td><td><a href="https://www.pbby.org.ph/ncba" target="_blank" rel="noopener">pbby.org.ph</a></td></tr>
+    <tr><td>PBBY-Salanga Prize / Alcala Prize</td><td>IBBY Philippines</td><td>미출간 아동문학 원고</td><td><a href="https://www.pbby.org.ph/" target="_blank" rel="noopener">pbby.org.ph</a></td></tr>
+    <tr><td>IKAPI Awards (인도네시아 출판협회)</td><td>IKAPI</td><td>인도네시아 출판·아동도서</td><td><a href="https://ikapi.id/" target="_blank" rel="noopener">ikapi.id</a></td></tr>
+    <tr><td>Carlos Palanca 기념 문학상</td><td>Carlos Palanca Foundation</td><td>필리핀 최대 문학상 (아동 부문 포함)</td><td><a href="http://www.palancaawards.com.ph/" target="_blank" rel="noopener">palancaawards.com.ph</a></td></tr>
+    <tr><td>동남아시아 문학 협의회 (MASTERA)</td><td>5개국 공동</td><td>말레이어/인도네시아어 문학</td><td>—</td></tr>
+    <tr><td>동남아시아도서관인대회 (CONSAL)</td><td>동남아 각국 도서관 협회</td><td>도서관 네트워크 (2028 싱가포르)</td><td>—</td></tr>
+  </table>
+  </div>
+
+  <div class="sec-title" style="font-size:1rem;margin-top:1.5rem">🔍 아세안 이야기 아카이브 & 구전 DB</div>
+  <div style="overflow-x:auto">
+  <table class="cmp">
+    <tr><th>명칭</th><th>내용</th><th>링크</th></tr>
+    <tr><td>ACC 아시아문화정보 (아시아 스토리 200)</td><td>2011~2012 동남아 이야기 200선 수록</td><td><a href="http://archive.acc.go.kr" target="_blank" rel="noopener">archive.acc.go.kr</a></td></tr>
+    <tr><td>건국대 다문화시대 이주민 구술설화 DB</td><td>아세안 이주민 구술 설화 자료 (캄보디아·미얀마·베트남 등)</td><td><a href="http://waks.aks.ac.kr/rsh/dir/rview.aspx?rshID=AKS-2016-KFR-1230004" target="_blank" rel="noopener">waks.aks.ac.kr</a></td></tr>
+    <tr><td>국립어린이청소년도서관 다국어 동화</td><td>아세안 언어 동화 영상 스트리밍</td><td><a href="https://www.nlcy.go.kr/NLCY/contents/C10503010000.do" target="_blank" rel="noopener">nlcy.go.kr</a></td></tr>
+    <tr><td>올리볼리 세계 그림동화</td><td>다문화 전래동화 영상</td><td><a href="https://ollybolly.org" target="_blank" rel="noopener">ollybolly.org</a></td></tr>
+    <tr><td>서울대 다양성+아시아 웹진</td><td>태국 도시전설 등 동남아 생활문화 연구</td><td><a href="https://diverseasia.snu.ac.kr" target="_blank" rel="noopener">diverseasia.snu.ac.kr</a></td></tr>
+    <tr><td>에스플라네이드 아시아 예술 아카이브 (싱가포르)</td><td>싱가포르 설화·예술 자료</td><td><a href="https://www.esplanade.com/offstage" target="_blank" rel="noopener">esplanade.com/offstage</a></td></tr>
+    <tr><td>Kontinentalist (싱가포르)</td><td>싱가포르 역사·설화 비주얼 스토리텔링</td><td><a href="https://kontinentalist.com" target="_blank" rel="noopener">kontinentalist.com</a></td></tr>
+    <tr><td>DREAMSEA (동남아 원고 디지털화)</td><td>동남아 고문헌 디지털 아카이브</td><td><a href="https://dreamsea.co" target="_blank" rel="noopener">dreamsea.co</a></td></tr>
+  </table>
+  </div>
+</div>
+
+<!-- 퀴즈 -->
+<div id="panel-quiz" class="panel">
+  <div class="sec-title">✏️ 동남아시아 역사 퀴즈 10문제</div>
+  <p style="font-size:.83rem;color:var(--muted);margin-bottom:1.2rem">선택지를 클릭하면 즉시 채점됩니다.</p>
+  <div id="quiz-area"></div>
+  <button class="reset-btn" id="reset-btn">🔄 다시 풀기</button>
+</div>
+
+<script>
+(function() {
+
+/* ── 데이터 ── */
+var TL = [
+  {year:"기원전 111년",era:"고대",title:"한나라, 베트남 북부 정복",tag:"china",countries:["🇻🇳 베트남"],detail:"중국 한나라가 베트남 북부를 정복해 약 1000년간 지배. 한자·유교·불교·도교·과거제 전파. 이 시기 베트남은 '안남(安南)'으로 불림."},
+  {year:"1~5세기",era:"고대",title:"부남(푸난) 왕국 번성",tag:"india",countries:["🇰🇭 캄보디아"],detail:"메콩강 하류의 힌두 왕국. 동남아 최초 인도화 국가 중 하나. 해상 무역으로 번성."},
+  {year:"2~17세기",era:"고대·중세",title:"참파 왕국",tag:"india",countries:["🇻🇳 베트남"],detail:"베트남 중남부의 힌두 왕국. 해상 무역으로 번영하다 베트남 대월 왕조에 점진적으로 흡수됨."},
+  {year:"679년",era:"고대",title:"당나라 안남 도호부 설치",tag:"china",countries:["🇻🇳 베트남"],detail:"당나라가 하노이에 안남 도호부 설치. '안남(南쪽을 평정)'이라는 명칭의 기원."},
+  {year:"7~13세기",era:"중세",title:"스리위자야 — 불교 해상제국",tag:"india",countries:["🇮🇩 인도네시아"],detail:"수마트라 섬에서 말라카 해협을 장악한 불교 해상제국. 인도·중국·이슬람 상인의 무역 요충지. 동남아시아 불교 전파 거점."},
+  {year:"8~9세기",era:"중세",title:"보로부두르 사원 건설",tag:"india",countries:["🇮🇩 인도네시아"],detail:"샤일렌드라 왕조가 자와 섬에 건설한 대승불교 사원. 수천 개의 소탑이 합쳐진 거대 불탑 형태. 1991년 유네스코 세계문화유산 등재."},
+  {year:"972년",era:"중세",title:"베트남, 북송에게 독립 인정",tag:"china",countries:["🇻🇳 베트남"],detail:"당나라 멸망 후 혼란기에 독립 기반을 닦은 베트남이 북송으로부터 독립을 공식 인정받음."},
+  {year:"9~15세기",era:"중세",title:"앙코르 왕조 전성기",tag:"india",countries:["🇰🇭 캄보디아"],detail:"앙코르와트(힌두 → 불교), 앙코르톰 건설. 인도 건축의 영향을 받았으나 독창성이 뚜렷. 힌두신 비슈누를 모시는 사원으로 시작해 불교 사원으로 전환."},
+  {year:"1009년",era:"중세",title:"리(Lý) 왕조 수립",tag:"china",countries:["🇻🇳 베트남"],detail:"약 200년 지속(1009~1225). 과거제 도입, 문묘 설립, 대월 국호 사용, 대승불교 포교. 중앙집권화 기반을 닦음."},
+  {year:"1044년",era:"중세",title:"파간 왕조 — 최초 통일",tag:"india",countries:["🇲🇲 미얀마"],detail:"버마족에 의한 최초의 미얀마 통일 왕조. 상좌부 불교 채택, 버마 문자 보급. 바간(Bagan) 불탑 유적의 기원."},
+  {year:"1225년",era:"중세",title:"쩐(Trần) 왕조 — 몽골 격퇴",tag:"china",countries:["🇻🇳 베트남"],detail:"1258·1285·1288년 몽골군 세 차례 침공을 모두 격퇴. 장군 쩐 흥 다오 활약. 쯔놈 베트남 문자 제정, 각종 문학 발달."},
+  {year:"1238년",era:"중세",title:"수코타이 왕조 — 최초 통일",tag:"india",countries:["🇹🇭 태국"],detail:"타이족의 첫 통일 왕조. 상좌부 불교 채택. 1283년 타이 문자 창제. 1378년 아유타야에 흡수."},
+  {year:"14세기",era:"중세",title:"란쌍 왕국 수립",tag:"india",countries:["🇱🇦 라오스"],detail:"중국 남부에서 이주해온 라오족이 세운 왕국. 힌두 문화 기반 위에 불교 문화를 꽃피움. 메콩강 유역 강국."},
+  {year:"1293~1527년",era:"중세",title:"마자파히트 왕조",tag:"india",countries:["🇮🇩 인도네시아"],detail:"동남아 최대 제국. 말레이 반도와 필리핀 일부까지 지배. 향신료 무역 독점으로 번성. 16세기 이슬람 세력에 붕괴."},
+  {year:"1351년",era:"중세",title:"아유타야 왕조 수립",tag:"india",countries:["🇹🇭 태국"],detail:"수코타이를 합병하고 강력한 중앙집권 구축. 포르투갈과 무역 허용, 크리스트교 포교 인정. 1767년 미얀마 꼰바웅 왕조에 멸망."},
+  {year:"1407~1427년",era:"중세",title:"명나라 영락제, 베트남 재점령",tag:"china",countries:["🇻🇳 베트남"],detail:"쩐 왕조 붕괴 후 명나라의 약 20년 지배. 이후 레 러이가 1428년 후레 왕조 수립하고 명을 축출."},
+  {year:"1414년",era:"중세",title:"말라카 왕국 — 동남아 최초 이슬람 국가",tag:"islam",countries:["🇲🇾 말레이시아"],detail:"말레이 반도 말라카 왕국이 이슬람을 국교로 선포. 중국 비단·도자기와 향신료 중계 무역으로 번성. 1511년 포르투갈에 멸망."},
+  {year:"1511년",era:"근세",title:"포르투갈, 말라카 점령",tag:"europe",countries:["🇲🇾 말레이시아","🇵🇹 포르투갈"],detail:"유럽 세력의 동남아 본격 진출. 포르투갈이 말라카를 점령해 향신료 무역 독점. 이후 1641년 네덜란드, 1824년 영국이 점령."},
+  {year:"16세기~1898년",era:"근세",title:"스페인, 필리핀 식민 지배",tag:"europe",countries:["🇵🇭 필리핀"],detail:"스페인의 식민지배로 가톨릭 전파. '필리핀'이라는 국명은 스페인 국왕 펠리페 2세에서 유래. 호세 리살 독립운동, 카티푸난 비밀결사."},
+  {year:"17세기~1945년",era:"근세",title:"네덜란드 VOC, 인도네시아 지배",tag:"europe",countries:["🇮🇩 인도네시아"],detail:"네덜란드 동인도회사(VOC)가 향신료 무역 독점을 위해 인도네시아 지배. 약 300년간 착취적 플랜테이션 경제 구축."},
+  {year:"19세기 후반",era:"근세",title:"프랑스, 인도차이나 식민지 건설",tag:"europe",countries:["🇻🇳 베트남","🇰🇭 캄보디아","🇱🇦 라오스"],detail:"프랑스가 베트남·캄보디아·라오스를 차례로 점령해 프랑스령 인도차이나 형성. 근왕 운동 등 저항 운동 탄압."},
+  {year:"19세기 후반",era:"근세",title:"영국, 미얀마·말레이·싱가포르 지배",tag:"europe",countries:["🇲🇲 미얀마","🇲🇾 말레이시아","🇸🇬 싱가포르","🇧🇳 브루나이"],detail:"영국이 미얀마(1885년 영국-인도 편입), 말레이 반도, 싱가포르, 브루나이를 차례로 장악. 고무·주석 등 자원 수탈."},
+  {year:"1782년~현재",era:"근세",title:"짜크리 왕조 수립",tag:"modern",countries:["🇹🇭 태국"],detail:"현재 태국 왕실의 기원. 방콕 천도. 라마 4세(1855 영국과 불평등조약), 라마 5세의 근대화 개혁으로 동남아 유일하게 식민지화 회피."},
+  {year:"1855년",era:"근대",title:"시암, 영국과 바이링 조약",tag:"modern",countries:["🇹🇭 태국"],detail:"라마 4세가 영국과 최초 불평등 조약 체결 후 총 13개국과 유사 조약. 서양 고문 초빙, 근대화 추진. 종주권 일부 양보로 독립 유지."},
+  {year:"1904~1909년",era:"근대",title:"동유(東遊) 운동",tag:"modern",countries:["🇻🇳 베트남"],detail:"독립운동가 판 보이 쩌우가 청년들을 일본으로 유학 보낸 운동. 메이지 유신의 경험을 배워 독립·근대화 인재 양성. 월남망국사 출판."},
+  {year:"1908년",era:"근대",title:"부디 우토모 — 최초 민족운동 단체",tag:"modern",countries:["🇮🇩 인도네시아"],detail:"지식인 중심의 인도네시아 최초 민족주의 단체 결성. 민족 의식 고취, 근대적 교육 강조. 1935년 해체."},
+  {year:"1927년",era:"근대",title:"수카르노, 인도네시아 국민당 조직",tag:"modern",countries:["🇮🇩 인도네시아"],detail:"수카르노가 네덜란드 식민정책에 저항하는 독립운동 핵심 세력 조직. 1945년 독립 선포 주도, 초대 대통령 취임."},
+  {year:"1932년",era:"근대",title:"무혈 쿠데타 — 입헌군주국 전환",tag:"modern",countries:["🇹🇭 태국"],detail:"소수 엘리트 군인당의 무혈 쿠데타. 절대군주제에서 입헌군주국으로 전환. 1939년 국호 시암 → 타이."},
+  {year:"1945~2002년",era:"근대",title:"2차 대전 후 독립의 물결",tag:"modern",countries:["🇮🇩","🇻🇳","🇵🇭","🇲🇲","🇰🇭","🇱🇦","🇲🇾","🇸🇬","🇧🇳","🇹🇱"],detail:"태평양전쟁 종전 후 동남아 각국 독립. 인도네시아(1945), 베트남(1945), 필리핀(1946), 미얀마(1948), 캄보디아·라오스(1953), 말레이시아(1957), 싱가포르(1965), 브루나이(1984), 동티모르(2002)."},
+  {year:"1954년",era:"현대",title:"제네바 협정 — 남북 분단",tag:"modern",countries:["🇻🇳 베트남"],detail:"인도차이나 전쟁 종결. 17도선으로 남북 베트남 분할. 북부 호찌민, 남부 바오 다이 정권."},
+  {year:"1964~1975년",era:"현대",title:"베트남 전쟁",tag:"modern",countries:["🇻🇳 베트남"],detail:"미국 등 동맹국이 개입한 남북 베트남 전쟁. 1975년 북베트남 무력 통일 후 베트남 사회주의 공화국 수립."},
+  {year:"1967년",era:"현대",title:"ASEAN 창설 — 방콕 선언",tag:"asean",countries:["🇮🇩","🇲🇾","🇵🇭","🇸🇬","🇹🇭"],detail:"인도네시아·말레이시아·필리핀·싱가포르·태국 5개국이 방콕 선언으로 창설. 동남아시아의 평화·경제·사회문화 발전 도모."},
+  {year:"1999년",era:"현대",title:"아세안 10개국 가입 완료",tag:"asean",countries:["🇧🇳","🇻🇳","🇱🇦","🇲🇲","🇰🇭"],detail:"브루나이(1984), 베트남(1995), 라오스·미얀마(1997), 캄보디아(1999) 차례로 가입해 10개국 완성."},
+  {year:"2015년",era:"현대",title:"아세안 공동체(ASEAN Community) 출범",tag:"asean",countries:["🌏 ASEAN 전체"],detail:"정치·안보 / 경제 / 사회·문화 3대 공동체 체제 통합. 인구 6억 9,400만, GDP 4조 달러 경제권."},
+  {year:"2025년",era:"현대",title:"아세안 비전 2045 발표 & 동티모르 가입",tag:"asean",countries:["🇹🇱 동티모르","🌏 ASEAN 전체"],detail:"사람 중심 아세안 공동체 비전 2045 채택. 동티모르가 11번째 정식 회원국으로 가입해 ASEAN 완성."}
+];
+
+var COUNTRIES = [
+  {flag:"🇧🇳",ko:"브루나이",en:"Brunei Darussalam",capital:"반다르스리브가완",pop:"46만 명",area:"5,265㎢",religion:"이슬람(국교)",lang:"말레이어·영어",gdp:"$34,044",indie:"1984년",color:"#6b4fa8",slogan:"평화가 깃든 왕국, 아시아의 숨겨진 보석",desc:"동남아시아 보르네오 섬 북서 해안의 이슬람 술탄 왕국. 석유·천연가스 풍부해 세금 없고 교육비·의료비 무료. Jawi(자위) 아랍 기반 문자 사용. 세계 최대 수상가옥 마을 캄퐁 아예르 보유.",hist:"포르투갈·스페인 간섭 → 19세기 영국 보호령 → 1984년 독립. 술탄 하사날 볼키아의 복지 정책으로 안정 유지. 말레이시아 영토가 브루나이를 동서로 나누는 분리 영토.",kw:["술탄 왕국","이슬람 국교","Jawi 문자","석유·천연가스","보르네오 섬"]},
+  {flag:"🇰🇭",ko:"캄보디아",en:"Cambodia",capital:"프놈펜",pop:"1,764만 명",area:"17만 6,515㎢",religion:"불교 97.1%",lang:"크메르어",gdp:"$2,755",indie:"1953년",color:"#d85a30",slogan:"크메르인의 자부심과 영광을 느낄 수 있는 나라",desc:"앙코르 왕조의 후손인 크메르 민족의 나라. 앙코르와트 등 크메르 제국 유적이 전국에 산재. 산이 거의 없고 강과 호수가 많은 평탄한 지형.",hist:"앙코르 왕조(9~15세기) 전성기 → 프랑스 식민지(1887~1953) → 1975~1979 크메르 루주 킬링필드 비극 → 1993년 유엔 감시 하 총선 민주화.",kw:["앙코르와트","크메르족","불교 97%","킬링필드","메콩강"]},
+  {flag:"🇮🇩",ko:"인도네시아",en:"Indonesia",capital:"자카르타",pop:"2억 8,349만 명",area:"181만 1,569㎢",religion:"이슬람 87.4%",lang:"인도네시아어·영어",gdp:"$4,958",indie:"1945년",color:"#dc2626",slogan:"다양함 속에서 조화를 이룬 떠오르는 별",desc:"세계에서 가장 많은 섬(약 1만 8천 개)을 가진 나라. 1,340여 개 민족, 718개 종족어. 세계 최대 무슬림 인구 보유국이지만 헌법으로 신앙의 자유 보장.",hist:"힌두·불교 왕국(스리위자야·마자파히트) → 이슬람 전파 → 네덜란드 VOC 300년 지배 → 1945년 수카르노 독립 선포 → 1949년 주권 공식 회복.",kw:["보로부두르","스리위자야","마자파히트","수카르노","부디 우토모"]},
+  {flag:"🇱🇦",ko:"라오스",en:"Lao PDR",capital:"비엔티안",pop:"777만 명",area:"23만 800㎢",religion:"불교 64.7%",lang:"라오어",gdp:"$2,066",indie:"1953년",color:"#1d9e75",slogan:"아름다운 자연과 전통을 지키는 나라",desc:"아세안 유일의 내륙국. 메콩강이 1,900km 걸쳐 흐름. 1당제 사회주의 공화국. 찹쌀을 주식으로 삼는 등 한국과 닮은 문화 보유.",hist:"란쌍 왕국(14세기~18세기) → 프랑스 식민지 → 1953년 독립. 베트남전 당시 폭격 피해. 현재 공산당 1당 체제.",kw:["란쌍 왕국","메콩강","내륙국","탓 루앙","루앙프라방 세계유산"]},
+  {flag:"🇲🇾",ko:"말레이시아",en:"Malaysia",capital:"쿠알라룸푸르",pop:"3,300만 명",area:"32만 9,847㎢",religion:"이슬람 61.3%",lang:"말레이어·영어",gdp:"$12,800",indie:"1957년",color:"#1d4ed8",slogan:"다양성이 존중받는 역사 깊은 나라",desc:"말레이계·중국계·인도계 등 다양한 민족 공존. 이슬람 국교이나 불교·힌두교·기독교도 자유롭게 존재. 페트로나스 트윈타워, 열대 우림의 보고.",hist:"말라카 왕국(1400년, 최초 이슬람국) → 포르투갈·네덜란드·영국 지배 → 1957년 독립 → 1965년 싱가포르 분리 독립.",kw:["말라카 왕국","Jawi 문자","이슬람 국교","페트로나스 타워","영국 식민"]},
+  {flag:"🇲🇲",ko:"미얀마",en:"Myanmar",capital:"네피도",pop:"5,450만 명",area:"65만 3,508㎢",religion:"불교 87.9%",lang:"미얀마어",gdp:"$1,114",indie:"1948년",color:"#065f46",slogan:"천 년의 역사를 자랑하는 불교 유적지",desc:"인도와 중국의 교차점. 50만 명 이상의 승려, 국민 88%가 불교신자. 전국이 불교 유적지라 불릴 정도로 수많은 불탑. 2021년 군부 쿠데타로 국제사회 이목 집중.",hist:"파간 왕조(1044) 최초 통일 → 따웅우·꼰바웅 왕조 → 1885년 영국-인도에 편입 → 1948년 독립 → 아웅산 수치 민주화 운동 → 2021년 군부 쿠데타.",kw:["파간 왕조","바간 불탑","상좌부 불교","버마 문자","영국 식민"]},
+  {flag:"🇵🇭",ko:"필리핀",en:"The Philippines",capital:"마닐라",pop:"1억 1,584만 명",area:"29만 8,170㎢",religion:"천주교 78.8%",lang:"영어·필리핀어",gdp:"$4,079",indie:"1946년",color:"#1e40af",slogan:"살아 숨쉬는 자연 속에서 여유를 누려 보자",desc:"7,600개 섬으로 구성된 군도. 동남아 최대 가톨릭 국가. 스페인 식민지배 300년의 흔적으로 가톨릭과 영어가 일상화. 세부·보라카이 등 세계적 관광지.",hist:"16세기~ 스페인 식민지 → 1898년 미국-스페인 전쟁 후 미국 지배 → 1946년 독립. 호세 리살 독립운동, 카티푸난 비밀결사.",kw:["호세 리살","카티푸난","스페인 식민","천주교","Baybayin 문자"]},
+  {flag:"🇸🇬",ko:"싱가포르",en:"Singapore",capital:"싱가포르",pop:"604만 명",area:"734㎢",religion:"불교 31.1%",lang:"영어·중국어·말레이어·타밀어",gdp:"$90,674",indie:"1965년",color:"#b91c1c",slogan:"작지만 강한! 부유한 나라 그리고 축제의 나라",desc:"서울시의 약 1.2배 면적의 도시국가. 1965년 말레이시아에서 분리 독립. 금융·무역 중심지로 아세안 1인당 GDP 1위($90,674). 4개 공용어, 매달 크고 작은 축제.",hist:"14세기 무역 거점 → 1819년 영국 래플스 경 개항 → 영국 식민지 → 1942~1945 일본 점령 → 1965.8.9 독립. 리콴유 총리의 개발 독재로 급성장.",kw:["머라이언","리콴유","금융 허브","다민족 도시국가","1965년 독립"]},
+  {flag:"🇹🇭",ko:"태국",en:"Thailand",capital:"방콕",pop:"7,167만 명",area:"51만 890㎢",religion:"불교 92.5%",lang:"태국어",gdp:"$7,492",indie:"식민지화 없음",color:"#b45309",slogan:"매력적인 문화, 역동적인 활동을 체험해 볼까?",desc:"동남아 유일의 비식민지 경험 국가. 입헌군주국(짜크리 왕조 현재까지). 불교가 삶 전반에 깊이 뿌리내려 사원이 학교·병원 역할. 관광산업이 GDP의 10%.",hist:"수코타이(1238) → 아유타야(1351~1767) → 짜크리 왕조(1782~현재). 라마 5세의 대대적 근대화 개혁. 1932년 입헌군주국 전환, 1939년 시암→태국.",kw:["짜크리 왕조","아유타야","라마 5세 근대화","수코타이","타이 문자"]},
+  {flag:"🇹🇱",ko:"동티모르",en:"Timor-Leste",capital:"딜리",pop:"140만 명",area:"1만 4,954㎢",religion:"천주교 97.6%",lang:"테툼어·포르투갈어",gdp:"$1,438",indie:"2002년",color:"#7c3aed",slogan:"우리의 새로운 친구, 처음 만나는 동티모르",desc:"아세안 최신(2025) 회원국. 과거 포르투갈 식민지였다가 인도네시아 점령(1975~1999)을 거쳐 2002년 독립. 열대 몬순기후, 커피가 주요 수출품.",hist:"포르투갈 식민지(16세기~1975) → 인도네시아 점령(1975~1999) → UN 감시 하 국민투표 독립 의결 → 2002.5.20 공식 독립 → 2025년 ASEAN 정식 가입.",kw:["포르투갈 식민","인도네시아 점령","2002년 독립","ASEAN 최신","커피 수출"]},
+  {flag:"🇻🇳",ko:"베트남",en:"Viet Nam",capital:"하노이",pop:"1억 99만 명",area:"31만 70㎢",religion:"무교 86.3%",lang:"베트남어",gdp:"$4,536",indie:"1945년",color:"#dc2626",slogan:"빠른 성장의 원동력은 강인한 민족성과 풍부한 천연자원!",desc:"S자형 긴 해안선. 남북으로 다양한 기후와 자연환경. 프랑스 식민시대 건물과 아름다운 자연 경관. 중국 유교 문화 영향으로 교육열이 높음.",hist:"기원전 111년 한나라 정복 → 약 1000년 중국 지배 → 972년 독립 → 리·쩐 왕조 → 명나라 재점령(1407~27) → 후레 왕조 → 응우옌 왕조 → 1858년 프랑스 침략 → 1945년 호찌민 독립 선포 → 남북 분단 → 베트남전쟁(1964~75) → 통일(1975).",kw:["호찌민","쩐흥다오","판보이쩌우","쯔놈 문자","도이머이 개혁"]}
+];
+
+var QUIZ = [
+  {q:"동남아시아에서 유일하게 식민지화를 피한 나라는?",opts:["필리핀","말레이시아","태국(시암)","인도네시아"],ans:2,fb:"태국(시암)은 라마 4·5세의 유연한 외교와 영국-프랑스 완충지대 역할로 독립을 유지했습니다."},
+  {q:"앙코르와트는 처음에 어느 종교의 사원으로 건설되었나요?",opts:["불교","이슬람교","힌두교","기독교"],ans:2,fb:"비슈누 신을 모시는 힌두 사원으로 건설되었다가 이후 불교 사원으로 전환되었습니다."},
+  {q:"보로부두르 사원이 위치한 나라와 섬은?",opts:["캄보디아 앙코르","인도네시아 자와 섬","미얀마 만달레이","태국 치앙마이"],ans:1,fb:"인도네시아 자와 섬 중심부에 위치한 대승불교 사원으로, 1991년 유네스코 세계문화유산 등재."},
+  {q:"베트남이 중국으로부터 독립을 인정받은 연도는?",opts:["618년(당나라 건국)","972년(북송 시대)","1009년(리 왕조)","1428년(후레 왕조)"],ans:1,fb:"당나라 멸망 후 혼란기에 베트남은 북송 시대인 972년 독립을 인정받았습니다."},
+  {q:"동남아시아 최초로 이슬람을 국교로 선포한 왕국은?",opts:["브루나이","마자파히트(인도네시아)","말라카 왕국(말레이시아)","필리핀 술탄국"],ans:2,fb:"말레이 반도의 말라카 왕국이 1414년 이슬람을 국교로 선포했습니다."},
+  {q:"ASEAN(아세안)은 몇 년에 창설되었나요?",opts:["1945년","1955년","1967년","1975년"],ans:2,fb:"1967년 방콕 선언으로 인도네시아·말레이시아·필리핀·싱가포르·태국 5개국이 창설했습니다."},
+  {q:"1283년 타이(Thai) 문자를 창제한 왕조는?",opts:["아유타야 왕조","수코타이 왕조","란쌍 왕국","짜크리 왕조"],ans:1,fb:"수코타이 왕조가 1283년 타이 문자를 만들었습니다."},
+  {q:"베트남 쩐(Trần) 왕조가 세 차례 모두 격퇴한 세력은?",opts:["명나라","원나라(몽골)","포르투갈","프랑스"],ans:1,fb:"쩐 왕조는 1258·1285·1288년 원나라(몽골)의 세 차례 침공을 모두 격퇴했습니다."},
+  {q:"동남아시아에서 가장 최근에 독립(2002년)한 나라는?",opts:["브루나이","싱가포르","동티모르","라오스"],ans:2,fb:"동티모르는 포르투갈 식민지 → 인도네시아 점령 → 2002.5.20 독립. ASEAN에는 2025년 가입."},
+  {q:"1511년 포르투갈이 점령해 유럽의 동남아 진출을 연 곳은?",opts:["싱가포르","자카르타(바타비아)","말라카","마닐라"],ans:2,fb:"포르투갈이 말라카 왕국을 점령(1511)해 향신료 무역 독점의 거점으로 삼았습니다."}
+];
+
+/* ── 탭 전환 ── */
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var id = this.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+    this.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+  });
+});
+
+/* ── 연표 ── */
+var curTag = 'all';
+var curCf = 'all';
+function renderTL(tagFilter, cfFilter) {
+  tagFilter = tagFilter !== undefined ? tagFilter : curTag;
+  cfFilter  = cfFilter  !== undefined ? cfFilter  : curCf;
+  curTag = tagFilter; curCf = cfFilter;
+  var list = document.getElementById('tl-list');
+  list.innerHTML = '';
+  var tagLabel = {india:'인도',china:'중국',islam:'이슬람',europe:'유럽',modern:'근대',asean:'ASEAN'};
+  TL.forEach(function(d) {
+    if (tagFilter !== 'all' && d.tag !== tagFilter) return;
+    if (cfFilter !== 'all') {
+      var matched = (d.countries || []).some(function(c){ return c.indexOf(cfFilter) !== -1; });
+      if (!matched) return;
+    }
+    var flags = (d.countries || []).map(function(c) {
+      return '<span style="font-size:.82rem;background:#f3f4f6;border-radius:5px;padding:1px 6px;margin-right:3px;white-space:nowrap">' + c + '</span>';
+    }).join('');
+    var el = document.createElement('div');
+    el.className = 'tl-item';
+    el.innerHTML =
+      '<div class="tl-era">' + d.era + '</div>' +
+      '<div class="tl-year">' + d.year + ' <span class="tl-tag tag-' + d.tag + '">' + tagLabel[d.tag] + '</span></div>' +
+      '<div class="tl-title">' + d.title + '</div>' +
+      '<div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:3px">' + flags + '</div>' +
+      '<div class="tl-detail">' + d.detail + '</div>';
+    el.addEventListener('click', function(){ this.classList.toggle('open'); });
+    list.appendChild(el);
+  });
+}
+renderTL('all');
+
+document.getElementById('filter-row').addEventListener('click', function(e) {
+  var btn = e.target.closest('.fbtn');
+  if (!btn) return;
+  document.querySelectorAll('.fbtn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderTL(btn.getAttribute('data-filter'), curCf);
+});
+document.getElementById('country-filter-row').addEventListener('click', function(e) {
+  var btn = e.target.closest('.cfbtn');
+  if (!btn) return;
+  document.querySelectorAll('.cfbtn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderTL(curTag, btn.getAttribute('data-cf'));
+});
+
+/* ── 국가 카드 ── */
+function renderCountries() {
+  var grid = document.getElementById('country-grid');
+  COUNTRIES.forEach(function(c, i) {
+    var tags = (c.kw || []).map(function(k) {
+      return '<span class="ctag" style="background:' + c.color + '22;color:' + c.color + '">' + k + '</span>';
+    }).join('');
+    var card = document.createElement('div');
+    card.className = 'country-card';
+    card.innerHTML =
+      '<div class="card-header" style="background:' + c.color + '15">' +
+        '<div class="card-flag">' + c.flag + '</div>' +
+        '<div><div class="card-name-ko">' + c.ko + '</div><div class="card-name-en">' + c.en + '</div></div>' +
+      '</div>' +
+      '<div class="card-slogan">"' + c.slogan + '"</div>' +
+      '<div class="card-body">' +
+        '<div class="info-row"><span class="info-key">수도</span><span class="info-val">' + c.capital + '</span></div>' +
+        '<div class="info-row"><span class="info-key">인구</span><span class="info-val">' + c.pop + '</span></div>' +
+        '<div class="info-row"><span class="info-key">종교</span><span class="info-val">' + c.religion + '</span></div>' +
+        '<div class="info-row"><span class="info-key">언어</span><span class="info-val">' + c.lang + '</span></div>' +
+        '<div class="info-row"><span class="info-key">1인당GDP</span><span class="info-val">' + c.gdp + '</span></div>' +
+      '</div>' +
+      '<div class="card-tags">' + tags + '</div>';
+    card.addEventListener('click', function(){ openModal(i); });
+    grid.appendChild(card);
+  });
+}
+renderCountries();
+
+/* ── 모달 ── */
+function openModal(i) {
+  var c = COUNTRIES[i];
+  document.getElementById('m-flag').textContent = c.flag;
+  document.getElementById('m-name').textContent = c.ko;
+  document.getElementById('m-name-en').textContent = c.en;
+  document.getElementById('modal-top').style.background = 'linear-gradient(135deg,' + c.color + ',' + c.color + '99)';
+  document.getElementById('m-grid').innerHTML =
+    '<div class="modal-stat"><div class="k">수도</div><div class="v">' + c.capital + '</div></div>' +
+    '<div class="modal-stat"><div class="k">인구</div><div class="v">' + c.pop + '</div></div>' +
+    '<div class="modal-stat"><div class="k">면적</div><div class="v">' + c.area + '</div></div>' +
+    '<div class="modal-stat"><div class="k">종교</div><div class="v">' + c.religion + '</div></div>' +
+    '<div class="modal-stat"><div class="k">언어</div><div class="v">' + c.lang + '</div></div>' +
+    '<div class="modal-stat"><div class="k">1인당GDP</div><div class="v">' + c.gdp + '</div></div>' +
+    '<div class="modal-stat"><div class="k">독립</div><div class="v">' + c.indie + '</div></div>';
+  document.getElementById('m-desc').textContent = c.desc;
+  document.getElementById('m-hist').textContent = c.hist;
+  document.getElementById('m-kw').innerHTML = (c.kw || []).map(function(k) {
+    return '<span class="ctag" style="background:' + c.color + '22;color:' + c.color + ';font-size:.78rem;padding:3px 10px;border-radius:11px;font-weight:600">' + k + '</span>';
+  }).join('');
+  document.getElementById('modal-bg').classList.add('open');
+}
+document.getElementById('modal-bg').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+document.getElementById('modal-close').addEventListener('click', function() {
+  document.getElementById('modal-bg').classList.remove('open');
+});
+
+/* ── 퀴즈 ── */
+function renderQuiz() {
+  var area = document.getElementById('quiz-area');
+  area.innerHTML = '';
+  QUIZ.forEach(function(q, qi) {
+    var opts = q.opts.map(function(o, oi) {
+      return '<button class="quiz-opt" data-qi="' + qi + '" data-oi="' + oi + '">' + o + '</button>';
+    }).join('');
+    var card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.id = 'qcard' + qi;
+    card.innerHTML =
+      '<div class="quiz-q">Q' + (qi+1) + '. ' + q.q + '</div>' +
+      '<div class="quiz-opts">' + opts + '</div>' +
+      '<div class="quiz-fb" id="qfb' + qi + '">💡 ' + q.fb + '</div>';
+    area.appendChild(card);
+  });
+  area.addEventListener('click', function(e) {
+    var btn = e.target.closest('.quiz-opt');
+    if (!btn || btn.disabled) return;
+    var qi = parseInt(btn.getAttribute('data-qi'));
+    var oi = parseInt(btn.getAttribute('data-oi'));
+    var q = QUIZ[qi];
+    document.querySelectorAll('#qcard' + qi + ' .quiz-opt').forEach(function(b, i) {
+      b.disabled = true;
+      if (i === q.ans) b.classList.add('correct');
+      else if (i === oi) b.classList.add('wrong');
+    });
+    document.getElementById('qfb' + qi).classList.add('show');
+  });
+}
+renderQuiz();
+document.getElementById('reset-btn').addEventListener('click', renderQuiz);
+
+/* ── 동화 데이터 ── */
+var TALES = [
+  {country:"태국·라오스·베트남",animals:["두꺼비"],theme:"전설·기우제",
+   title:"비를 내리게 하는 파야탠",
+   wave:"india",
+   story:"7년 동안 비가 내리지 않자 두꺼비왕 파야냑이 뱀·말벌·개구리왕 등을 모아 하늘로 올라가 파야탠 신에게 비를 요청합니다. 파야탠은 6개월마다 불을 쏘아 올려 기억을 상기시키라고 당부합니다. 라오스 분 방파이(로켓 축제)의 기원 설화.",
+   links:[{t:"올리볼리 영상",u:"https://ollybolly.org"},{t:"태국 두꺼비 박물관",u:"https://www.tourismthailand.org/Attraction/phaya-khan-khak-museum"}]},
+  {country:"필리핀",animals:["나가"],theme:"기원신화·월식",
+   title:"바쿠나와 — 달을 삼킨 바다 뱀",
+   wave:"india",
+   story:"옛날 하늘에는 7개의 달이 있었습니다. 바다 거대 뱀 바쿠나와가 그 빛에 탐내어 하나씩 삼켜 버립니다. 마지막 달마저 삼키려 할 때 사람들이 북을 두드려 놀라게 하자 달을 뱉어냅니다. 월식의 기원 설화.",
+   links:[]},
+  {country:"싱가포르",animals:["용","악어"],theme:"지명유래·건국신화",
+   title:"머라이언 — 사자의 도시 싱가푸라",
+   wave:"india",
+   story:"수마트라 왕자 상 닐라 우타마가 사냥 중 본 낯선 동물을 사자로 착각하여 '싱가푸라(사자의 도시)'라 이름 붙였습니다. 실제 그 지역에 사자가 살지 않음에도 이 오해가 싱가포르 국명의 기원이 되었습니다.",
+   links:[{t:"Esplanade 아카이브",u:"https://www.esplanade.com/offstage/arts/searching-for-the-white-crocodile"},{t:"말레이 연대기(위키)",u:"https://en.wikipedia.org/wiki/Malay_Annals"}]},
+  {country:"동티모르",animals:["악어"],theme:"창세신화",
+   title:"착한 악어 — 티모르 섬이 된 악어",
+   wave:"modern",
+   story:"어린 악어를 도와 바다로 돌려보낸 소년을 위해 악어는 오랜 항해 후 죽으며 '내 몸을 아름다운 섬으로 바꾸겠다'고 말합니다. 악어의 몸이 자라 티모르 섬이 되었고, 동티모르 사람들은 악어를 '아보 라파엑(할아버지 악어)'라 부릅니다.",
+   links:[{t:"ACC 아카이브",u:"http://archive.acc.go.kr/infoResManage/infoResManageView.do?ifmrsId=915833"}]},
+  {country:"싱가포르·말레이시아",animals:["악어"],theme:"지명설화·영웅",
+   title:"하얀 악어 — 항 투아와 아야 푸티",
+   wave:"islam",
+   story:"말라카 술탄국 영웅 항 투아가 싱가포르 해협을 항해하던 중 전설의 흰 악어 '아야 푸티'와 맞닥뜨립니다. 또 다른 이야기에서 강가의 노인 와크 카심이 악어들을 돌보다 스스로 몸을 내주려 하지만, 악어들은 그를 해치지 않고 사라집니다.",
+   links:[{t:"Esplanade 아카이브",u:"https://www.esplanade.com/offstage/arts/searching-for-the-white-crocodile"},{t:"히카얏 항 투아 UNESCO",u:"https://www.unesco.org.my/unesco-recognition/communication-information/the-memory-of-the-world-international-register/hikayat-hang-tuah"}]},
+  {country:"말레이시아",animals:["호랑이"],theme:"샤먼·변신",
+   title:"하리마우 자디안 — 호랑이로 변하는 인간",
+   wave:"islam",
+   story:"말레이 세계(말레이시아·인도네시아 수마트라)에 전해지는 구전 설화. 주술을 익힌 샤먼이 밤이 되면 호랑이로 변신합니다. 마을 가축이 사라지고 발자국이 한 사람의 집 근처에서 시작되어 의심을 받게 됩니다. 두려움과 동시에 마을의 수호자로 여겨지기도 합니다.",
+   links:[]},
+  {country:"베트남",animals:["용"],theme:"건국신화",
+   title:"락롱꾸언과 어우꺼 — 용의 후손",
+   wave:"china",
+   story:"용왕 락롱꿘과 산의 요정 어우꺼가 만나 100개의 알을 낳고, 그 아들들이 베트남 민족의 시조가 됩니다. 50명은 아버지를 따라 용궁으로, 50명은 어머니와 함께 산으로 갑니다. 베트남 사람들이 '용의 자손'이라 칭하는 이유이며, 하롱베이 지명의 기원이기도 합니다.",
+   links:[{t:"EBS 샌드아트 영상",u:"https://www.youtube.com/watch?v=VC1o2hBAJlA"}]},
+  {country:"베트남",animals:["거북"],theme:"전설·지명유래",
+   title:"호안끼엠 호수 — 검을 돌려준 거북",
+   wave:"china",
+   story:"명나라 침입에 맞선 레러이 장군이 신비한 검으로 승리를 거두고 황제가 됩니다. 이후 호수에서 거북 신 김꾸이가 나타나 검은 하늘이 빌려준 것이라며 돌려받아 물속으로 사라집니다. 하노이 호안끼엠(검을 돌려준) 호수의 유래입니다.",
+   links:[{t:"호안끼엠 소개",u:"https://vinpearl.com/en/hoan-kiem-lake-history"},{t:"Esplanade 아카이브",u:"https://www.esplanade.com/offstage/arts/legend-of-sword-lake"}]},
+  {country:"캄보디아·태국 외",animals:["나가"],theme:"창세신화·건국",
+   title:"나가 — 메콩강의 수호신",
+   wave:"india",
+   story:"거대한 뱀신 나가는 메콩강 유역 전체의 수호신입니다. 캄보디아에서는 나가 공주가 인간 왕과 결혼해 크메르 민족의 조상이 되었다고 믿습니다. 앙코르와트 사원 난간에 7개 머리를 가진 코브라 형상으로 조각되어 있습니다.",
+   links:[{t:"앙코르 부조 관련",u:"http://thebestnews.co.kr/bbs/board.php?bo_table=news&wr_id=13001"}]},
+  {country:"인도네시아",animals:["가루다"],theme:"힌두신화",
+   title:"가루다 — 비슈누의 신조(神鳥)",
+   wave:"india",
+   story:"현자의 아내 비나타가 낳은 두 번째 알에서 반인반조 가루다가 태어납니다. 어머니를 노예에서 해방시키기 위해 신들의 불사의 영약 암리타를 인드라로부터 빼앗아 옵니다. 인도네시아 국장 '가루다 판차실라'로 현재까지 살아있는 신화입니다.",
+   links:[{t:"국립민속박물관 가루다 유물",u:"https://www.nfm.go.kr/user/data/home/101/DataRelicView.do?seq=PS0100200100107942900000"},{t:"인도네시아 대사관 가루다 음악",u:"https://www.youtube.com/watch?v=0px3Dt0qMvc"}]},
+  {country:"미얀마",animals:["거위"],theme:"신화·건국",
+   title:"힌타 — 두 거위와 땅의 탄생",
+   wave:"india",
+   story:"옛날 세상은 물로 가득 차 있었습니다. 하늘을 날던 두 마리 힌타(거위/백조)가 쉴 곳을 찾다가 한 마리가 다른 한 마리의 등에 올라앉는 순간, 처음으로 땅이 드러납니다. 그곳이 바고(페구)가 되었습니다. 한타와디 왕국 국기의 금색 함사가 이 신화에서 비롯됩니다.",
+   links:[]},
+  {country:"미얀마",animals:["사자"],theme:"신화·불교수호",
+   title:"친테 — 사원을 지키는 사자",
+   wave:"india",
+   story:"미얀마 공주가 사자와 사랑에 빠져 아들을 낳습니다. 훗날 아들이 아버지인 줄 모르고 사자를 죽이고, 그 사실을 알게 된 후 속죄하기 위해 사원 입구에 사자상을 세웁니다. 그것이 친테입니다. 미얀마 국장 양쪽에 배치된 상상의 동물입니다.",
+   links:[{t:"국립아시아문화전당 소개",u:"https://www.ach.or.kr/achNewsletter/mgzinSubViewPage.do?mgzinSubSn=26771&langTy=KOR"}]},
+  {country:"미얀마·태국·라오스·베트남",animals:["코끼리"],theme:"불교설화·왕권상징",
+   title:"흰 코끼리 — 왕권과 공덕의 상징",
+   wave:"india",
+   story:"부처의 탄생 설화에서 마야 왕비가 6개의 상아를 가진 흰 코끼리가 품 안으로 들어오는 꿈을 꿉니다. 상좌부 불교 국가에서 흰 코끼리를 많이 보유한 왕이 위대한 군주로 여겨졌습니다. 라오스 란쌍 왕국의 국명은 '100만 마리 코끼리의 왕국'이라는 뜻입니다.",
+   links:[{t:"국립어린이청소년도서관 동화",u:"https://www.nlcy.go.kr/NLCY/contents/C10503010000.do?schFld=ko&schM=view&storySeq=283"}]},
+  {country:"캄보디아",animals:["물고기"],theme:"힌두신화·홍수",
+   title:"마쯔야 — 세상을 구한 물고기",
+   wave:"india",
+   story:"마누가 개울에서 말하는 작은 물고기를 구해주자, 물고기는 빠르게 자라며 대홍수를 경고합니다. 마누는 배를 만들어 일곱 현자와 함께 피신하고, 마쯔야의 뿔에 배를 묶어 히말라야로 인도됩니다. 비슈누의 화신 이야기. 앙코르 바이욘 사원 부조에 묘사됩니다.",
+   links:[]},
+  {country:"필리핀",animals:["쥐사슴"],theme:"민담·꾀",
+   title:"필란독과 악어 — 꾀 많은 쥐사슴",
+   wave:"modern",
+   story:"망고를 따러 강을 건너야 하는 쥐사슴 필란독이 악어에게 수를 세겠다고 속여 한 줄로 세운 뒤 등을 밟고 강을 건넙니다. 돌아오는 길에 잡힐 위기에도 '간을 집에 두고 왔다'고 속여 탈출합니다. 동남아 전역에 변형이 존재하는 꾀 많은 작은 동물 이야기입니다.",
+   links:[{t:"ACC 아카이브",u:"http://archive.acc.go.kr/infoResManage/infoResManageView.do?ifmrsId=917742"}]},
+  {country:"태국",animals:["물고기"],theme:"신데렐라형·업보",
+   title:"황금 망둑어 이야기",
+   wave:"india",
+   story:"계모에게 학대받는 소녀의 어머니가 황금 망둑어로 환생해 딸을 돕습니다. 계모가 물고기를 죽이자 어머니는 나무, 앵무새 등으로 계속 환생하며 딸을 돕습니다. 결국 소녀는 왕과 결혼하고, 악은 벌을 받습니다. 태국 국가 무형문화유산 등재 설화입니다.",
+   links:[{t:"태국 드라마 영상",u:"https://youtu.be/52CKT2ajUPc"},{t:"태국 문화진흥부",u:"https://www.facebook.com/photo/?fbid=624185273144644"}]},
+  {country:"베트남·미얀마·캄보디아·필리핀",animals:["물소","호랑이"],theme:"민담·지혜·유래",
+   title:"나의 지혜는 이것이다 — 물소 윗니의 유래",
+   wave:"india",
+   story:"채찍질 당하며 일하는 물소에게 호랑이가 왜 사람에게 반항하지 않느냐 묻자 '사람의 지혜 때문'이라 답합니다. 농부가 호랑이를 나무에 묶고 불을 지피며 '이것이 지혜'라고 말합니다. 물소는 웃다 바위에 넘어져 윗니가 부러지고, 호랑이 털은 얼룩덜룩해집니다.",
+   links:[{t:"베트남어 원문",u:"https://thleductho.hcm.edu.vn/suu-tam-chia-se/tri-khon-cua-ta-day-truyen-co-dan-gian/ctmb/112629/921099"},{t:"유튜브 영상",u:"https://youtu.be/QogCE0atW8o"}]},
+  {country:"캄보디아",animals:["거북"],theme:"민담·재판·지혜",
+   title:"스브하 단사이 — 재판관 토끼",
+   wave:"india",
+   story:"영리한 토끼 재판관이 악어와 우마차꾼의 분쟁을 기지로 해결하고, 다양한 재판 사건을 지혜롭게 처리합니다. 인도 판차탄트라·자타카의 영향을 받은 캄보디아 대표 우화. 동남아 전역에 비슷한 이야기가 존재합니다.",
+   links:[{t:"ACC 아카이브",u:"http://archive.acc.go.kr/infoResManage/infoResManageView.do?ifmrsId=918212"}]},
+  {country:"라오스",animals:["코끼리"],theme:"자타카·불교",
+   title:"베산타라 자타카 — 흰 코끼리를 보시한 왕자",
+   wave:"india",
+   story:"베산타라 왕자는 가뭄을 막아주는 신비한 흰 코끼리를 이웃 나라에 보시하여 추방됩니다. 숲속에서도 마차·말·아이·아내까지 모두 보시하며 극단적인 무집착을 실천합니다. 라오스에서 매년 분 프라 웻 축제에서 이 이야기 전체를 낭송합니다.",
+   links:[]},
+  {country:"인도네시아",animals:["나가"],theme:"힌두신화",
+   title:"판지 설화 — 자바의 왕자 이야기",
+   wave:"india",
+   story:"13세기 자바의 영웅 판지 왕자가 사랑하는 찬드라 키라나 공주를 찾아 변장과 모험을 거쳐 재회하는 이야기입니다. 라마야나·마하바라타의 영향에서 벗어난 자바 독자 문학. 마자파히트 제국 시대 해상 무역로를 통해 태국·미얀마·캄보디아까지 전파되었습니다.",
+   links:[{t:"유네스코 등재",u:"https://www.unesco.org.my/unesco-recognition/communication-information/the-memory-of-the-world-international-register/panji-tales-manuscripts"}]},
+];
+
+/* ── 동화 렌더 ── */
+var curTF = 'all';
+var curAF = 'all';
+
+function renderTales(tf, af, wf) {
+  tf = tf !== undefined ? tf : curTF;
+  af = af !== undefined ? af : curAF;
+  wf = wf !== undefined ? wf : curWF;
+  curTF = tf; curAF = af; curWF = wf;
+  var grid = document.getElementById('tales-grid');
+  grid.innerHTML = '';
+  var colorMap = {
+    "베트남":"#dc2626","태국":"#b45309","라오스":"#1d9e75","캄보디아":"#d85a30",
+    "미얀마":"#065f46","인도네시아":"#dc2626","필리핀":"#1e40af","싱가포르":"#b91c1c",
+    "말레이시아":"#1d4ed8","동티모르":"#7c3aed"
+  };
+  TALES.forEach(function(t, i) {
+    var countryMatch = tf === 'all' || t.country.indexOf(tf) !== -1;
+    var animalMatch  = af === 'all' || t.animals.some(function(a){ return a.indexOf(af) !== -1; });
+    var waveMatch    = wf === 'all' || (t.wave && t.wave === wf);
+    if (!countryMatch || !animalMatch || !waveMatch) return;
+    // 대표 색상
+    var c = '#6b4fa8';
+    Object.keys(colorMap).forEach(function(k){ if (t.country.indexOf(k) !== -1) c = colorMap[k]; });
+    var linkHtml = t.links.map(function(l){
+      return '<a class="tale-link" href="' + l.u + '" target="_blank" rel="noopener">↗ ' + l.t + '</a>';
+    }).join('');
+    var waveLabels = {india:'🟠 인도',islam:'🟢 이슬람',china:'🔴 중국',modern:'🔵 현대도서'};
+    var waveBadge = t.wave ? '<span style="font-size:.7rem;padding:2px 7px;border-radius:10px;background:var(--teal-l);color:var(--teal);font-weight:600;margin-right:4px">' + (waveLabels[t.wave]||t.wave) + '</span>' : '';
+    var animalTags = t.animals.map(function(a){
+      return '<span class="tale-animal">' + a + '</span> ';
+    }).join('');
+    var card = document.createElement('div');
+    card.className = 'tale-card';
+    card.innerHTML =
+      '<div style="margin-bottom:3px">' + waveBadge + animalTags + '</div>' +
+      '<div class="tale-title">' + t.title + '</div>' +
+      '<div class="tale-country" style="color:' + c + ';font-weight:600">' + t.country + '</div>' +
+      '<div class="tale-theme"># ' + t.theme + '</div>' +
+      '<div class="tale-body">' + t.story + (linkHtml ? '<div style="margin-top:.6rem">' + linkHtml + '</div>' : '') + '</div>';
+    card.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') return;
+      this.classList.toggle('open');
+    });
+    grid.appendChild(card);
+  });
+  var cnt = grid.children.length;
+  if (cnt === 0) grid.innerHTML = '<p style="font-size:.85rem;color:var(--muted);padding:.5rem">해당 조건의 이야기가 없습니다.</p>';
+}
+renderTales('all','all');
+
+document.getElementById('tales-filter').addEventListener('click', function(e) {
+  var btn = e.target.closest('.tfbtn');
+  if (!btn) return;
+  document.querySelectorAll('.tfbtn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderTales(btn.getAttribute('data-tf'), curAF, curWF);
+});
+document.getElementById('wave-filter').addEventListener('click', function(e) {
+  var btn = e.target.closest('.wfbtn');
+  if (!btn) return;
+  document.querySelectorAll('.wfbtn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderTales(curTF, curAF, btn.getAttribute('data-wf'));
+});
+document.getElementById('animal-filter').addEventListener('click', function(e) {
+  var btn = e.target.closest('.afbtn');
+  if (!btn) return;
+  document.querySelectorAll('.afbtn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderTales(curTF, btn.getAttribute('data-af'), curWF);
+});
+
+
+/* ── 관련 기관 데이터 ── */
+var ORGS = [
+  {
+    country:"🇰🇷 한국 (ASEAN 관련)",
+    color:"#1d4ed8",
+    items:[
+      {name:"한-아세안센터",sub:"ASEAN-Korea Centre",url:"https://www.aseankorea.org",note:"세종대로 124, 서울. 아세안 공식 협력기관"},
+      {name:"국립아시아문화전당 (ACC)",sub:"Asia Culture Center, 광주",url:"https://www.acc.go.kr",note:"누산타라 컬렉션 7,744점 보유 (델프트 누산타라박물관 舊 소장품)"},
+      {name:"부산 아세안문화원",sub:"ASEAN Culture House, 부산",url:"https://ach.or.kr",note:"2017년 개관. 한-아세안 대화관계 30주년"},
+      {name:"국립세계문자박물관",sub:"National Museum of World Writing, 인천",url:"https://mow.or.kr",note:"2023년 개관. 2027 동남아 문자 특별전 예정"},
+      {name:"국립어린이청소년도서관",sub:"NLCY",url:"https://www.nlcy.go.kr/NLCY/contents/C10503010000.do",note:"다국어 동화 영상 스트리밍 (아세안 언어 포함)"},
+      {name:"올리볼리 세계 그림동화",sub:"Ollybolly",url:"https://ollybolly.org",note:"다문화 전래동화 영상 플랫폼"},
+      {name:"ACC 아시아스토리 아카이브",sub:"아시아 이야기 200선",url:"http://archive.acc.go.kr",note:"2011~2012 동남아 이야기 200선 수록"},
+    ]
+  },
+  {
+    country:"🇻🇳 베트남",
+    color:"#dc2626",
+    items:[
+      {name:"베트남 국립역사박물관",sub:"Bảo tàng Lịch sử Quốc gia",url:"https://baotanglichsu.vn",note:"하노이. 청동기~현대 유물 소장"},
+      {name:"베트남 국립미술관",sub:"Bảo tàng Mỹ thuật Việt Nam",url:"https://www.vnfam.vn",note:"하노이. 쯔놈 관련 회화·목판화"},
+      {name:"Nhã Nam 출판사",sub:"Nhà Nam Publisher",url:"https://nhanam.vn",note:"2026년 Nguyễn Tư Nghiêm 삽화 김반끼에우 특별판 999부 출판"},
+      {name:"Bảo tàng Nguyễn Tuân–Nguyễn Tư Nghiêm",sub:"90 B2 Trần Hưng Đạo, Hoàn Kiếm, Hà Nội",url:"",note:"작가 유족 관리. 조디악 회화 주요 소장처. 연락: nhanam@nhanam.vn"},
+      {name:"베트남 국립도서관",sub:"Thư viện Quốc gia Việt Nam",url:"https://nlv.gov.vn",note:"하노이. 쯔놈·한문 고문헌 소장"},
+    ]
+  },
+  {
+    country:"🇰🇭 캄보디아",
+    color:"#d85a30",
+    items:[
+      {name:"캄보디아 국립박물관",sub:"National Museum of Cambodia",url:"https://www.cambodiamuseum.info",note:"프놈펜. 앙코르 시대 조각·비문"},
+      {name:"앙코르 유적 관리청 (APSARA)",sub:"APSARA National Authority",url:"https://www.autoriteapsara.org",note:"앙코르와트 보존·연구"},
+      {name:"캄보디아 왕립예술학교",sub:"Royal University of Fine Arts",url:"https://rufa.edu.kh",note:"크메르 전통예술·문자 교육"},
+    ]
+  },
+  {
+    country:"🇮🇩 인도네시아",
+    color:"#dc2626",
+    items:[
+      {name:"인도네시아 국립박물관",sub:"Museum Nasional Indonesia",url:"https://www.museumnasional.or.id",note:"자카르타. 우노보요 황금 유물 소장. 한국과 2005~2007 교류 전시"},
+      {name:"보로부두르 문화재 관리청",sub:"Balai Konservasi Borobudur",url:"https://borobudurpark.com",note:"자와 중부. 1991년 유네스코 세계문화유산"},
+      {name:"인도네시아 출판협회 (IKAPI)",sub:"Ikatan Penerbit Indonesia",url:"https://ikapi.id",note:"아동도서상 IKAPI Awards 운영"},
+      {name:"ACC 누산타라 컬렉션",sub:"Nusantara Collection, Gwangju",url:"https://www.acc.go.kr",note:"페라나칸 문화·이슬람화·라마야나 그림자극·바틱·이캇 등 7,744점"},
+    ]
+  },
+  {
+    country:"🇲🇾 말레이시아 / 🇧🇳 브루나이",
+    color:"#1d4ed8",
+    items:[
+      {name:"말레이시아 국립박물관",sub:"Muzium Negara Malaysia",url:"https://www.muziumnegara.gov.my",note:"쿠알라룸푸르. 말라카 왕국·이슬람 문화"},
+      {name:"말레이시아 국립도서관 (Arkib Negara)",sub:"Perpustakaan Negara Malaysia",url:"https://www.pnm.gov.my",note:"자위 문자 고문헌 소장"},
+      {name:"싱가포르 국립도서관 (NLB)",sub:"National Library Board Singapore",url:"https://www.nlb.gov.sg",note:"히카얏 항 투아 (자위 필사본) 소장. 세자라 멜라유 1840년판 (Acc B31655050C) 소장"},
+      {name:"NHB 싱가포르",sub:"National Heritage Board",url:"https://www.nhb.gov.sg",note:"싱가포르 국가 문화유산 관리"},
+    ]
+  },
+  {
+    country:"🇲🇲 미얀마",
+    color:"#065f46",
+    items:[
+      {name:"미얀마 국립박물관",sub:"National Museum of Myanmar",url:"",note:"양곤. 파간 왕조 비문·불교 유물"},
+      {name:"바간 고고박물관",sub:"Bagan Archaeological Museum",url:"",note:"미야제디 비문(버마의 로제타 스톤) 관련 유물"},
+      {name:"부산박물관 《미얀마의 불교미술》",sub:"2019년 교류 전시",url:"https://museum.busan.go.kr",note:"미얀마 4개 국립박물관 대여 유물 전시. 국내 전시 선례"},
+    ]
+  },
+  {
+    country:"🇵🇭 필리핀",
+    color:"#1e40af",
+    items:[
+      {name:"필리핀 국립박물관",sub:"National Museum of the Philippines",url:"https://www.nationalmuseum.gov.ph",note:"마닐라. 아바카다 문자·식민지 역사"},
+      {name:"IBBY Philippines (PBBY)",sub:"Philippine Board on Books for Young People",url:"https://www.pbby.org.ph",note:"전국아동도서상(NCBA), Salanga Prize, Alcala Prize 운영"},
+      {name:"Carlos Palanca Foundation",sub:"문학상 운영",url:"http://www.palancaawards.com.ph",note:"필리핀 최대 문학상. 아동 부문 포함"},
+      {name:"Nautilus Comics Philippines",sub:"독립 만화 출판사",url:"https://nautiluscomics.net",note:"연락: orders@nautiluscomics.net. 아세안 신화 현대 그래픽노블"},
+    ]
+  },
+  {
+    country:"🇸🇬 싱가포르",
+    color:"#b91c1c",
+    items:[
+      {name:"싱가포르 국립도서위원회 (NLB)",sub:"National Library Board",url:"https://www.nlb.gov.sg",note:"히카얏 항 투아 자위 필사본 소장"},
+      {name:"에스플라네이드 아카이브",sub:"Esplanade – Theatres on the Bay",url:"https://www.esplanade.com/offstage",note:"싱가포르 설화·예술 자료 아카이브"},
+      {name:"Kontinentalist",sub:"비주얼 스토리텔링 미디어",url:"https://kontinentalist.com",note:"싱가포르 역사·설화 데이터 시각화"},
+      {name:"아시안 어린이 콘텐츠 페스티벌 (AFCC)",sub:"Asian Festival of Children's Content",url:"https://afcc.com.sg",note:"싱가포르 도서협의회 운영. 아시아 아동도서·문학 (2011~)"},
+      {name:"싱가포르 도서협의회 (SBC)",sub:"Singapore Book Council",url:"https://www.bookcouncil.sg",note:"HABA(헤드윅 아누아르 아동도서상) 운영"},
+    ]
+  },
+  {
+    country:"🇹🇭 태국",
+    color:"#b45309",
+    items:[
+      {name:"태국 국립박물관",sub:"National Museum Bangkok",url:"https://www.finearts.go.th/bangkoknationalmuseum",note:"방콕. 수코타이 람캄행 비문·타이 문자 원형"},
+      {name:"태국 문화진흥부",sub:"กรมส่งเสริมวัฒนธรรม",url:"https://www.culture.go.th",note:"무형문화유산 관련 전래동화 목록 보유"},
+      {name:"S.E.A. Write Award",sub:"동남아시아 작가상",url:"http://seawrite.com",note:"1979~. 태국 외교부 계열. ASEAN 종합문학상"},
+      {name:"HimmapanVR Project",sub:"치앙마이대학",url:"","note":"히마판 신화세계 VR 콘텐츠. 연락: kitti.p@cmu.ac.th"},
+    ]
+  },
+  {
+    country:"🌐 국제 기관 & 아카이브",
+    color:"#6b4fa8",
+    items:[
+      {name:"DREAMSEA",sub:"동남아 원고 디지털화",url:"https://dreamsea.co",note:"동남아 고문헌 디지털 아카이브. 자바·발리·말레이 필사본"},
+      {name:"영국도서관 (British Library)",sub:"Digitised Manuscripts",url:"https://www.bl.uk/manuscripts",note:"Add.12384 히카얏 항 투아 자위 (완전 디지털화)"},
+      {name:"웰컴 컬렉션 (Wellcome Collection)",sub:"CC BY 4.0",url:"https://wellcomecollection.org",note:"동남아 의학·민속 관련 채색 필사본 다수"},
+      {name:"미국 의회도서관 (LoC)",sub:"Southeast Asian Manuscripts",url:"https://www.loc.gov/collections/southeast-asian-manuscripts",note:"공공도메인 동남아 필사본 컬렉션"},
+      {name:"영국박물관 이미지 (BM Images)",sub:"bmimages.com",url:"https://www.bmimages.com",note:"자타카 그림 on 면(BM 2003,1027,0.1) 등 라이선스 이미지"},
+      {name:"브리지만 이미지",sub:"Bridgeman Images / GNC 포토뱅크",url:"https://www.bridgemanimages.com",note:"동남아 회화·판화 라이선스"},
+      {name:"서울대 다양성+아시아 웹진",sub:"Diverse Asia, SNU",url:"https://diverseasia.snu.ac.kr",note:"동남아 생활문화·도시전설 연구"},
+      {name:"건국대 이주민 구술설화 DB",sub:"한국학중앙연구원 지원",url:"http://waks.aks.ac.kr/rsh/dir/rview.aspx?rshID=AKS-2016-KFR-1230004",note:"캄보디아·미얀마·베트남 이주민 구술 설화"},
+    ]
+  },
+];
+
+function renderOrgs() {
+  var grid = document.getElementById('org-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  ORGS.forEach(function(g) {
+    var itemsHtml = g.items.map(function(it) {
+      var domain = it.url ? it.url.replace('https://','').replace('http://','').split('/')[0] : '';
+      var link = it.url
+        ? '<a href="' + it.url + '" target="_blank" rel="noopener" style="font-size:.77rem;color:var(--blue);display:inline-block;margin-top:.2rem;padding:1px 7px;border:1px solid var(--blue);border-radius:5px;text-decoration:none">↗ ' + domain + '</a>'
+        : '';
+      return '<div style="padding:.55rem 0;border-bottom:1px solid var(--border)">' +
+        '<div style="font-size:.88rem;font-weight:600">' + it.name + '</div>' +
+        '<div style="font-size:.75rem;color:var(--muted);margin:.1rem 0">' + it.sub + '</div>' +
+        (it.note ? '<div style="font-size:.77rem;color:#555;margin-bottom:.2rem">' + it.note + '</div>' : '') +
+        link +
+      '</div>';
+    }).join('');
+    var card = document.createElement('div');
+    card.className = 'org-card';
+    card.innerHTML =
+      '<div style="font-size:.9rem;font-weight:700;color:' + g.color + ';border-bottom:2px solid ' + g.color + '33;padding-bottom:.4rem;margin-bottom:.4rem">' + g.country + '</div>' +
+      itemsHtml;
+    grid.appendChild(card);
+  });
+}
+renderOrgs();
+
+})();
+</script>
+</body>
+</html>
